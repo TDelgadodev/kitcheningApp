@@ -1,12 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Lista de productos</h1>
-</body>
+  <%- include('../partials/head') %>
+
+  <body class="home">
+    <%- include('../partials/header') %>
+    <!-- principal -->
+    <main class="home__main">
+      <section class="home__main__section--productos">
+        <!-- productos -->
+        <% courses.forEach(({id,title,price,description,image,chef}) => { %>
+        <article class="home__main__section__article animate__animated">
+          <div class="home__main__section__article--imagen">
+            <img
+              class="home__main__section__article--imagen-product"
+              src="/images/cursos/<%= image %> "
+              alt=""
+            />
+            <img
+              class="home__main__section__article--imagen-sticker"
+              src="/images/img-nuevo.png"
+              alt=""
+            />
+            <a class="home__main__section__article--imagen-zoom" href=""
+              >ampliar foto</a
+            >
+          </div>
+          <div class="home__main__section__article--contenido">
+            <h4><%= title %></h4>
+            <p><%= description %></p>
+            <a href="/courses/detail/<%= id %> ">ver más</a>
+          </div>
+        </article>
+        <% }) %>
+      </section>
+      <%- include('../partials/whatsapp') %>
+    </main>
+    <%- include('../partials/footer') %>
+
+    <!-- bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- glider -->
+    <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+
+    <script>
+      new Glider(document.querySelector(".glider"), {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        draggable: true,
+        dots: ".dots",
+        arrows: {
+          prev: ".glider-prev",
+          next: ".glider-next",
+        },
+        responsive: [
+          {
+            // screens greater than >= 768px
+            breakpoint: 768,
+            settings: {
+              // Set to `auto` and provide item width to adjust to viewport
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              itemWidth: 150,
+              duration: 0.25,
+            },
+          },
+          {
+            // screens greater than >= 1024px
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 1,
+              itemWidth: 150,
+              duration: 0.25,
+            },
+          },
+        ],
+      });
+    </script>
+  </body>
 </html>
