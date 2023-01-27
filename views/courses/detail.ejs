@@ -3,32 +3,21 @@
   <%- include('../partials/head') %>
   <body>
     <%- include('../partials/header') %>
-    <h1>Detalle de producto</h1>
-    <section class="homemainsection--productos">
-      <article class="homemainsectionarticle animateanimated">
-        <div class="homemainsectionarticle--imagen">
-          <img
-            class="homemainsectionarticle--imagen-product"
-            src="/images/cursos/<%= course.image %> "
-            alt=""
-          />
-          <img
-            class="homemainsectionarticle--imagen-sticker"
-            src="/images/img-nuevo.png"
-            alt=""
-          />
-          <a class="homemainsectionarticle--imagen-zoom" href=""
-            >ampliar foto</a
-          >
-        </div>
-        <div class="homemainsection__article--contenido">
-          <h4><%= curso.title %></h4>
-          <p><%= curso.description %></p>
-          <a href="/cursos/detail/<%= course.id %>">ver más</a>
-        </div>
-      </article>
-    </section>
-
+    <section class="home__main__section--productos">
+            <article class="home__main__section__article animate__animated">
+                <div class="home__main__section__article--imagen">
+                    <img class="home__main__section__article--imagen-product" src="/images/cursos/<%= course.image %> " alt="">
+                    <img class="home__main__section__article--imagen-sticker" src="/images/img-nuevo.png" alt="">
+                    <a class="home__main__section__article--imagen-zoom" href="">ampliar foto</a>
+                </div>
+                <div class="home__main__section__article--contenido">
+                    <h4> <%= course.title %>  </h4>
+                    <p> <%= course.description %>  </p>
+                    <a href="/cursos/detail/<%= course.id %>">ver más</a>
+                </div>
+            </article>
+        </section>
+            <%- include('../partials/footer') %>
     <%- include('../partials/whatsapp') %>
   </body>
 </html>
