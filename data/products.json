@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "imgProduct": "img-pdto-1.jpg",
+        "imgSticker": "img-nuevo.png",
+        "title": "Glasses",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vero rerum iure     dolorum optio delectus aut obcaecati culpa magni laudantium!"
+    },
+    {
+        "id": 2,
+        "imgProduct": "img-pdto-2.jpg",
+        "imgSticker": "img-gratis.png",
+        "title": "",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vero rerum iure     dolorum optio delectus aut obcaecati culpa magni laudantium!"
+    },
+    {
+        "id": 3,
+        "imgProduct": "img-pdto-3.jpg",
+        "imgSticker": "img-descuento.png",
+        "title": "Fideos con tuco",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vero rerum iure     dolorum optio delectus aut obcaecati culpa magni laudantium!"
+    },
+    {
+        "id": 4,
+        "imgProduct": "img-pdto-1.jpg",
+        "imgSticker": "img-nuevo.png",
+        "title": "Glasses",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vero rerum iure     dolorum optio delectus aut obcaecati culpa magni laudantium!"
+    },
+    {
+        "id": 5,
+        "imgProduct": "img-pdto-2.jpg",
+        "imgSticker": "img-gratis.png",
+        "title": "",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vero rerum iure     dolorum optio delectus aut obcaecati culpa magni laudantium!"
+    },
+    {
+        "id": 6,
+        "imgProduct": "img-pdto-3.jpg",
+        "imgSticker": "img-descuento.png",
+        "title": "",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo vero rerum iure     dolorum optio delectus aut obcaecati culpa magni laudantium!"
+    }
+]

@@ -1,5 +1,6 @@
 const courses = require("../data/courses.json");
-
+/* const products = require("../data/products.json");
+ */
 module.exports = {
   list: (req, res) => {
     return res.render("courses/list", {

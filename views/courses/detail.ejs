@@ -1,13 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <% include('../partials/head') %>
+  <%- include('../partials/head') %>
   <body>
-    <% include('../partials/header') %>
-
-    <main></main>
+    <%- include('../partials/header') %>
     <h1>Detalle de producto</h1>
+    <section class="homemainsection--productos">
+      <article class="homemainsectionarticle animateanimated">
+        <div class="homemainsectionarticle--imagen">
+          <img
+            class="homemainsectionarticle--imagen-product"
+            src="/images/cursos/<%= course.image %> "
+            alt=""
+          />
+          <img
+            class="homemainsectionarticle--imagen-sticker"
+            src="/images/img-nuevo.png"
+            alt=""
+          />
+          <a class="homemainsectionarticle--imagen-zoom" href=""
+            >ampliar foto</a
+          >
+        </div>
+        <div class="homemainsection__article--contenido">
+          <h4><%= curso.title %></h4>
+          <p><%= curso.description %></p>
+          <a href="/cursos/detail/<%= course.id %>">ver más</a>
+        </div>
+      </article>
+    </section>
 
-
-    <%- include('../partials/whatsapp')  %> 
+    <%- include('../partials/whatsapp') %>
   </body>
 </html>
