@@ -8,26 +8,23 @@
     <main class="home__main">
       <section class="home__main__section--productos">
         <!-- productos -->
-        <% courses.forEach(({id,title,price,description,image,chef}) => { %>
+        <% courses.forEach(({id,title,price,image,chef}) => { %>
         <article class="home__main__section__article animate__animated">
           <div class="home__main__section__article--imagen">
             <img
               class="home__main__section__article--imagen-product"
-              src="/images/cursos/<%= image %> "
+              src="/images/courses/<%= image %>"
               alt=""
+              height="260px"
             />
             <img
               class="home__main__section__article--imagen-sticker"
               src="/images/img-nuevo.png"
               alt=""
             />
-            <a class="home__main__section__article--imagen-zoom" href=""
-              >ampliar foto</a
-            >
           </div>
           <div class="home__main__section__article--contenido">
             <h4><%= title %></h4>
-            <p><%= description %></p>
             <a href="/courses/detail/<%= id %> ">ver más</a>
           </div>
         </article>
