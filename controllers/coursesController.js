@@ -1,5 +1,4 @@
 const courses = require("../data/courses.json");
-
 module.exports = {
   list: (req, res) => {
     return res.render("courses/list", {
@@ -14,6 +13,7 @@ module.exports = {
     return res.render("courses/detail", {
       title: "Detalle del curso",
       course,
+      courses,
     });
   },
 };

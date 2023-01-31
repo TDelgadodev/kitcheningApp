@@ -8,7 +8,7 @@
     <main class="home__main">
       <section class="home__main__section--productos">
         <!-- productos -->
-        <% courses.forEach(({id,title,price,image,chef}) => { %>
+        <% courses.forEach(({id,title,price,image,imgStatus,chef}) => { %>
         <article class="home__main__section__article animate__animated">
           <div class="home__main__section__article--imagen">
             <img
@@ -19,7 +19,7 @@
             />
             <img
               class="home__main__section__article--imagen-sticker"
-              src="/images/img-nuevo.png"
+              src="/images/<%= imgStatus %> "
               alt=""
             />
           </div>
