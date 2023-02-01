@@ -10,5 +10,13 @@
     {
         "id": 1011,
         "name": "Reposteria"
+    },
+    {
+        "id": 1213,
+        "name": "Comida Sana"
+    },
+    {
+        "id":1415,
+        "name": "otros"
     }
 ]

@@ -1,0 +1,19 @@
+<article class="home__main__section__article__animate__animated">
+    <div class="home__main__section__article--imagen">
+      <img
+        class="home__main__section__article--imagen-product"
+        src="/images/courses/<%= image %>"
+        alt=""
+        height="250px"
+      />
+      <img
+        class="home__main__section__article--imagen-sticker"
+        src="/images/<%= imgStatus %> "
+        alt=""
+      />
+    </div>
+    <div class="home__main__section__article--contenido">
+      <h4><%= title ? title : 'Product' %></h4>
+      <a href="courses/detail/<%= id %>">ver más</a>
+    </div>
+  </article>

@@ -25,20 +25,22 @@
     </ul>
   </nav>
   <div class="dropdown">
-    <a
+    <button
       class="btn btn-secondary dropdown-toggle"
-      href="#"
-      role="button"
+      type="button"
       data-bs-toggle="dropdown"
       aria-expanded="false"
     >
-    Categories
-    </a>
-
+      Categorias
+    </button>
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="/courses/category/:id">Sushi</a></li>
-      <li><a class="dropdown-item" href="/courses/category/:id">Pastas</a></li>
-      <li><a class="dropdown-item" href="/courses/category/:id">Reposteria</a></li>
+      <% categories.forEach(({id,name}) => { %>
+      <li>
+        <a href="/courses/category/<%= id %>" style="color: black"
+          ><%= name %>
+        </a>
+      </li>
+      <% }) %>
     </ul>
   </div>
 </header>

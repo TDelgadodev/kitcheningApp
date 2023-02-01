@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "categoryId": "6789",
     "title": "SUSHI PROFESIONAL",
     "price": 10530,
     "description": "Con una gran experiencia Roberto Nishida te enseña los secretos de las técnicas básicas en la elaboración del sushi, vas a descubrir la importancia de cada ingrediente para que realices una gran variedad de rolls, sashimis y niguiris.",
@@ -11,6 +12,7 @@
   },
   {
     "id": 2,
+    "categoryId": "2345",
     "title": "ABC DE LA COCINA",
     "price": 10530,
     "description": "Tu comida puede transformarse en platos de restaurante de la mano de Guillermo Calabrese que te enseñará a combinar ingredientes simples con productos gourmet para darle un sabor distinto a tus recetas.",
@@ -21,6 +23,7 @@
   },
   {
     "id": 3,
+    "categoryId": "1011",
     "title": "ABC de la pasteleria",
     "price": 14330,
     "description": "Para aprender las bases de la Pastelería te enseñamos de manera fácil las técnicas principales para iniciarte en esta disciplina.",
@@ -31,6 +34,7 @@
   },
   {
     "id": 4,
+    "categoryId": "2345",
     "title": "Pastas y Salsas",
     "price": 720.0,
     "description": "Para los amantes de la pasta esta es una oportunidad de aprender a realizar las recetas más conocidas de la cocina italiana, te enseñamos el secreto del amasado de las pastas frescas con las salsas más sabrosas.",
@@ -41,6 +45,7 @@
   },
   {
     "id": 5,
+    "categoryId": "1011",
     "title": "Panaderia Dulce",
     "price": 9720.0,
     "description": "Para hacer en tu casa o para vender, podés aprender a preparar las mejores facturas con nuestro Profesor Hernán que te enseña los ingredientes y la técnica correcta de amasado para que siempre te salgan perfectas.",
@@ -51,7 +56,8 @@
   },
   {
     "id": 6,
-    "title" : "ALIMENTACIÓN SALUDABLE 1",
+    "categoryId": "1213",
+    "title" : "ALIMENTACIÓN SALUDABLE",
     "price" : 9720,
     "description": "Si querés comer rico y sano con estas recetas vas a aprender a combinar los ingredientes más nobles para crear platos que sean saludables y equilibrados.",
     "image": "product3.jpg",
@@ -61,6 +67,7 @@
   },
   {
     "id": 7,
+    "categoryId":"1011",
     "title": "Cocina Francesa",
     "price": 10530.00,
     "description": "En este curso desarrollará las recetas más representativas y emblemáticas de la cocina clásica francesa, identificando los productos propios de esta cocina, según su interpretación y combinación de sabores en un menú; utilizando una conjugación de técnicas tradicionales y modernas. El profesor de este curso es el reconocido chef francés Olivier Falchi.",
@@ -71,6 +78,7 @@
   },
   {
     "id": 8,
+    "categoryId": "1213",
     "title": "Cocina Española",
     "price": 10530.0030,
     "description": "Entre paellas y cazuelas, los platos típicos de España llegan a tu mesa. Borja Blazquez te enseña los secretos de las mejores recetas de esta región para compartir con familiares y amigos.",
@@ -81,6 +89,7 @@
   },
   {
     "id": 9,
+    "categoryId": "1213",
     "title": "Cocina de Autor",
     "price": 10530.00,
     "description": "Para que puedas hacer pastas, pizzas y postres con un toque distinto, Roberto Petersen te enseña la forma fácil de darle un gusto especial a tus comidas preferidas.",
@@ -91,8 +100,9 @@
   },
   {
     "id": 10,
+    "categoryId": "1213",
     "title" : "COCINA NATURAL",
-    "price" : 10530,
+    "price" : "10530",
     "description": "PSi estás buscando una nueva forma de alimentarte, más consciente y sana para tu cuerpo, este curso te ayudará a incorporar las recetas vegetarianas para lograrlo. Mauro Massimino, egresado del instituto Gato Dumas y dueño de la cadena de restaurantes Buenos Aires Verde, te enseña cómo utilizar ingredientes saludables en sabrosas preparaciones y estar en armonía con la naturaleza.",
     "image": "product6.jpg",
     "chef": "Mauro Massimino",
@@ -101,6 +111,7 @@
   },
   {
     "id": 11,
+    "categoryId":"1011",
     "title" : "ABC DE LOS POSTRES",
     "price" : 10530,
     "description": "Si querés disfrutar todos los días de los postres tradicionales ahora podés aprender con esta variedad de recetas y que siempre te salgan perfectos.",
@@ -111,6 +122,7 @@
   },
   {
     "id": 12,
+    "categoryId": "1415",
     "title" : "COCTELERÍA Y BEBIDAS",
     "price" : 9720,
     "description": "Si querés ser Bartender hay conocimientos que debes tener y el Cubano Vega te da la fórmula para que prepares los tragos y bebidas más pedidos.",
