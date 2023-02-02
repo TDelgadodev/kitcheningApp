@@ -1,5 +1,6 @@
 const courses = require("../data/courses.json");
 const categories = require("../data/categories.json");
+const chefs = require("../data/chefs.json")
 module.exports = {
   list: (req, res) => {
     return res.render("courses/list", {
@@ -29,4 +30,19 @@ module.exports = {
       categories,
     }); 
   },
+  add : (req,res)=>{
+    return res.render('courses/formAdd',{
+      categories,
+      chefs
+    })
+  },
+  edit : (req,res)=>{
+    const { id } = req.params;
+    const course = courses.find((course) => course.id === +id);
+    return res.render('courses/formEdit',{
+      categories,
+      ...course,
+      chefs
+    })
+}
 };

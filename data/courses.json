@@ -51,8 +51,8 @@
     "description": "Para hacer en tu casa o para vender, podés aprender a preparar las mejores facturas con nuestro Profesor Hernán que te enseña los ingredientes y la técnica correcta de amasado para que siempre te salgan perfectas.",
     "image": "product2.jpg",
     "chef": "Hernan Perez Velazquez",
-    "status": "gratis",
-    "imgStatus": "img-gratis.png"
+    "status": "descuento",
+    "imgStatus": "img-descuento.png"
   },
   {
     "id": 6,
@@ -73,8 +73,8 @@
     "description": "En este curso desarrollará las recetas más representativas y emblemáticas de la cocina clásica francesa, identificando los productos propios de esta cocina, según su interpretación y combinación de sabores en un menú; utilizando una conjugación de técnicas tradicionales y modernas. El profesor de este curso es el reconocido chef francés Olivier Falchi.",
     "image": "product4.jpg",
     "chef": "Olivier Falchi",
-    "status": "gratis",
-    "imgStatus": "img-gratis.png"
+    "status": "newest",
+    "imgStatus": "img-nuevo.png"
   },
   {
     "id": 8,
@@ -95,8 +95,8 @@
     "description": "Para que puedas hacer pastas, pizzas y postres con un toque distinto, Roberto Petersen te enseña la forma fácil de darle un gusto especial a tus comidas preferidas.",
     "image": "curso06.jpg",
     "chef": "Roberto Petersen",
-    "status": "gratis",
-    "imgStatus": "img-gratis.png"
+    "status": "descuento",
+    "imgStatus": "img-descuento.png"
   },
   {
     "id": 10,
@@ -106,8 +106,8 @@
     "description": "PSi estás buscando una nueva forma de alimentarte, más consciente y sana para tu cuerpo, este curso te ayudará a incorporar las recetas vegetarianas para lograrlo. Mauro Massimino, egresado del instituto Gato Dumas y dueño de la cadena de restaurantes Buenos Aires Verde, te enseña cómo utilizar ingredientes saludables en sabrosas preparaciones y estar en armonía con la naturaleza.",
     "image": "product6.jpg",
     "chef": "Mauro Massimino",
-    "status": "gratis",
-    "imgStatus": "img-gratis.png"
+    "status": "newest",
+    "imgStatus": "img-nuevo.png"
   },
   {
     "id": 11,
@@ -117,8 +117,8 @@
     "description": "Si querés disfrutar todos los días de los postres tradicionales ahora podés aprender con esta variedad de recetas y que siempre te salgan perfectos.",
     "image": "product7.jpg",
     "chef": "Fabian Mahr",
-    "status": "gratis",
-    "imgStatus": "img-gratis.png"
+    "status": "newest",
+    "imgStatus": "img-nuevo.png"
   },
   {
     "id": 12,

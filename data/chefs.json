@@ -1,0 +1,62 @@
+[
+  { 
+    "id":1,
+    "name": "Roberto Nishida",
+    "photo": ""
+  },
+  { 
+    "id":2,
+    "name": "Guillermo Calabrese",
+    "photo": ""
+  },
+  { 
+    "id":3,
+    "name": "Claudio Gorriaran",
+    "photo": ""
+  },
+  { 
+    "id":4,
+    "name": "Mariano Martini",
+    "photo": ""
+  },
+  { 
+    "id":5,
+    "name": "Hernan Perez Velazquez",
+    "photo": ""
+  },
+  { 
+    "id":6,
+    "name": "Silvia Di Ciancio",
+    "photo": ""
+  },
+  { 
+    "id": 7,
+    "name": "Olivier Falchi",
+    "photo": ""
+  },
+  { 
+    "id":8,
+    "name": "Borja Blazquez",
+    "photo": ""
+  },
+  { 
+    "id":9,
+    "name": "Roberto Petersen",
+    "photo": ""
+  },
+  { 
+    "id":10,
+    "name": "Mauro Massimino",
+    "photo": ""
+  },
+  { 
+    "id":11,
+    "name": "Fabian Mahr",
+    "photo": ""
+  },
+  { 
+    "id":12,
+    "name": "Cubano Vega",
+    "photo": ""
+  }
+]

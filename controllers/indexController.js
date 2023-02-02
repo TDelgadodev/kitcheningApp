@@ -6,7 +6,8 @@ module.exports = {
     const newCourses = courses.filter(
       (course) => course.status === "newest"
     );
-    const oferCourses = courses.filter((course) => course.status === "descuento")
+    const oferCourses = courses.filter(
+      (course) => course.status === "descuento")
     return res.render("home", {
       title: "Kitchening | Home",
       courses,
