@@ -6,12 +6,12 @@
     <%- include('../partials/header') %>
     <!-- principal -->
     <main class="form__main">
-      <h2>Formulario: Agregar Producto</h2>
+      <h2>Formulario: Editar Producto</h2>
       <hr />
       <form action="">
         <div class="forms-add">
           <div class="form__box">
-            <label for="title"></label>
+            <label for="title">Titulo del curso:</label>
             <input type="text" name="title" id="title" placeholder="Titulo del curso" value="<%= title %>"/>
           </div>
           <div class="form__box">
@@ -21,35 +21,40 @@
           <div class="form__box">
             <label for="chef">Chef</label>
             <select name="chef" id="chef">
-              <option value="" selected hidden>Seleccione..</option>
               <% chefs.forEach(({name}) => { %>
-              <option value="<%= name %>"><%= name %></option>
+              <option value="<%= name %>" <%= chef === name && 'selected'%>><%= name %></option>
               <% }) %>
             </select>
           </div>
           <div class="form__box">
             <label for="description">Descripcion</label>
-            <textarea name="description" id="description"><%= description %></textarea>
+            <textarea class="form__box__textarea" name="description" id="description"><%= description %></textarea>
           </div>
           <div class="d-flex justify-content-around">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="section" id="new">
+                <input class="form-check-input" type="radio" name="section" id="new" <%= status === 'newest' && 'checked'%>>
                 <label class="form-check-label" for="new">
                   Nuevo
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="section" id="sale" >
+                <input class="form-check-input" type="radio" name="section" id="sale" <%= status === 'descuento' &&  'checked'%>>
                 <label class="form-check-label" for="sale">
                   Oferta
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="section" id="free" >
+                <input class="form-check-input" type="radio" name="section" id="free" <%= status === 'gratis' && 'checked'%>>
                 <label class="form-check-label" for="free">
                   Gratis
                 </label>
               </div>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="visible" name="visible" 
+            <%= visible && 'checked'%>
+            >
+            <label class="form-check-label" for="visible">Visible</label>
           </div>
           <div class="col-12 mb-3">
             <label for="image" class="form-label">Imagen</label>

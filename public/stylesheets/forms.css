@@ -12,7 +12,16 @@
     width: 100%;
     border: 1px solid silver;
 }
-
+.form__box label{
+    width: 100%;
+    padding: 8px 0px;
+}
+.form__box__select{
+    width: 40%;
+    border: 1px solid silver;
+    border-radius: 7px;
+    padding: 10px;
+}
 .form__label {
     color: #fff;
 }
@@ -28,3 +37,25 @@
     text-align: center;
 }
 
+.form__add{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: ghostwhite;
+    padding: 20px;
+}
+.form__add label{
+    width: 100%;
+}
+
+.form__main__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form__box__textarea{
+    border: 1px solid silver;
+    width: 90%;
+    padding: 10px;
+}

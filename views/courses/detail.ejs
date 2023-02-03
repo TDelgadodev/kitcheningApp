@@ -8,7 +8,7 @@
         <div class="home__main__section__article--imagen">
           <img
             class="home__main__section__article--imagen-product"
-            src="/images/courses/<%= course.image %> "
+            src="/images/courses/<%= course.image ? course.image : 'image-not-available.png'%> "
             alt=""
           />
           <img

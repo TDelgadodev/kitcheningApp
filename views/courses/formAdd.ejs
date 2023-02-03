@@ -6,9 +6,10 @@
     <%- include('../partials/header') %>
     <!-- principal -->
     <main class="form__main">
-      <h2>Formulario: Editar Producto</h2>
+      <h2>Formulario: Agregar Producto</h2>
       <hr />
-      <form action="">
+      <div class="form__main__container">
+        <form action="/courses/add" class="form__add" method="POST">
         <div class="forms-add">
           <div class="form__box">
             <label for="title">Titulo</label>
@@ -20,46 +21,61 @@
           </div>
           <div class="form__box">
             <label for="chef">Chef</label>
-            <select name="chef" id="chef">
+            <select name="chef" id="chef" class="form__box__select">
               <option value="" selected hidden>Seleccione..</option>
               <% chefs.forEach(({name}) => { %>
               <option value="<%= name %>"><%= name %></option>
               <% }) %>
             </select>
           </div>
+          <div>
+            <label for="categories">Categorias</label>
+            <select name="categories" id="categories" class="form__box__select">
+              <option value="" selected hidden>Seleccione..</option>
+              <% categories.forEach(({name}) => { %>
+              <option value="<%= name %>"><%= name %></option>
+              <% }) %>
+            </select>
+          </div>
           <div class="form__box">
             <label for="description">Descripcion</label>
-            <textarea name="description" id="description"></textarea>
+            <textarea class="form__box__textarea" name="description" id="description"></textarea>
           </div>
           <div class="d-flex justify-content-around">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="section" id="new">
+                <input class="form-check-input" type="radio" name="section" id="new" checked value="newest"> 
                 <label class="form-check-label" for="new">
                   Nuevo
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="section" id="sale" >
+                <input class="form-check-input" type="radio" name="section" id="sale" value="sale">
                 <label class="form-check-label" for="sale">
                   Oferta
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="section" id="free" >
+                <input class="form-check-input" type="radio" name="section" id="free" value="free">
                 <label class="form-check-label" for="free">
                   Gratis
                 </label>
               </div>
           </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="visible" name="visible">
+            <label class="form-check-label" for="visible">Visible</label>
+          </div>
           <div class="col-12 mb-3">
             <label for="image" class="form-label">Imagen</label>
-            <input type="file" class="form-control" id="image" name="image"/>
+            <input type="file" class="form-control" id="image"/>
           </div>
           <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-dark">Actualizar curso</button>
+            <button type="submit" class="btn btn-dark">Agregar curso</button>
           </div>
         </div>
       </form>
+      </div>
+
     </main>
     <%- include('../partials/footer') %>
   </body>

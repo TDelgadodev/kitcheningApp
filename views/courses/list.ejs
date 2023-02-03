@@ -13,7 +13,7 @@
           <div class="home__main__section__article--imagen">
             <img
               class="home__main__section__article--imagen-product"
-              src="/images/courses/<%= image %>"
+              src="/images/courses/<%= image ? image : 'image-not-available.jpg' %>"
               alt=""
               height="260px"
             />

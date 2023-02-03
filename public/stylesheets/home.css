@@ -9,6 +9,7 @@
 
 .home__main__section__article {
   width: 100%;
+  padding: 10px;
 }
 .home__main__section__article--imagen {
   position: relative;
