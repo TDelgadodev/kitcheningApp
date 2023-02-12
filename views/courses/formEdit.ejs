@@ -8,7 +8,7 @@
     <main class="form__main">
       <h2>Formulario: Editar Producto</h2>
       <hr />
-      <form action="">
+      <form action="/courses/update/<%= id %>?_method=PUT" method="post">
         <div class="forms-add">
           <div class="form__box">
             <label for="title">Titulo del curso:</label>
@@ -32,7 +32,7 @@
           </div>
           <div class="d-flex justify-content-around">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="section" id="new" <%= status === 'newest' && 'checked'%>>
+              <input class="form-check-input" type="radio" name="section" id="new" <%= status === 'newest' && 'checked'%>>
                 <label class="form-check-label" for="new">
                   Nuevo
                 </label>
@@ -61,7 +61,7 @@
             <input type="file" class="form-control" id="image" name="image"/>
           </div>
           <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-dark">Crear curso</button>
+            <button type="submit" class="btn btn-dark">Guardar Cambios</button>
           </div>
         </div>
       </form>

@@ -13,9 +13,8 @@
    },
    {
       "id": 2,
-      "categoryId": "2345",
       "title": "ABC DE LA COCINA",
-      "price": 10530,
+      "price": 11530,
       "description": "Tu comida puede transformarse en platos de restaurante de la mano de Guillermo Calabrese que te enseñará a combinar ingredientes simples con productos gourmet para darle un sabor distinto a tus recetas.",
       "image": "abc.jpg",
       "chef": "Guillermo Calabrese",
@@ -160,9 +159,10 @@
       "title": "Panaderia Casera",
       "price": 10530,
       "description": "En este curso aprenderás todas las tecnicas básicas de la panadería casera y artesanal. En cada elaboración tendrás un soporte teórico y demostrativo para comprender el proceso que se realiza en cada producto, las diferentes formas y el paso a paso fundamental de las variedades más relevantes de la panadería.",
-      "image": null,
+      "image": "curso04.webp",
       "chef": "Fabian Mahr",
       "status": "sale",
+      "imgStatus": null,
       "visible": true
    }
 ]

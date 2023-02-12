@@ -8,7 +8,7 @@
         <div class="home__main__section__article--imagen">
           <img
             class="home__main__section__article--imagen-product"
-            src="/images/courses/<%= course.image ? course.image : 'image-not-available.png'%> "
+            src="/images/courses/<%= image ? image : 'image-not-available.png'%> "
             alt=""
           />
           <img
@@ -18,12 +18,15 @@
           />
         </div>
         <div class="home__main__section__article--contenido">
-          <h4><%= course.title %></h4>
-          <p><%= course.description %></p>
-          <p><%= course.chef %></p>
-          <p><%= course.price %></p>
+          <h4><%= title %></h4>
+          <p><%= description %></p>
+          <p><%= chef %></p>
+          <p><%= price %></p>
         </div>
-        <a class="buttons__primary" href="/courses/edit/<%= course.id %>">Editar</a>
+        <div class="d-flex gap-2">
+          <a class="btn btn-success" href="/courses/edit/<%= id %>">Editar</a>
+          <a class="btn btn-danger" href="/courses/remove/<%= id %>">Eliminar</a>
+        </div>
       </article>
     </section>
     <%- include('../partials/footer') %> <%- include('../partials/whatsapp') %>
