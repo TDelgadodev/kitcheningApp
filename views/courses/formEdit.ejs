@@ -8,27 +8,37 @@
     <main class="form__main">
       <h2>Formulario: Editar Producto</h2>
       <hr />
-      <form action="/courses/update/<%= id %>?_method=PUT" method="post">
+      <form action="/courses/update/<%= id %>?_method=PUT" method="post" enctype="multipart/form-data">
         <div class="forms-add">
           <div class="form__box">
             <label for="title">Titulo del curso:</label>
             <input type="text" name="title" id="title" placeholder="Titulo del curso" value="<%= title %>"/>
+            <small class="text-danger ms-2"><%= locals.errors && errors.title ? errors.title.msg : null%></small>
           </div>
           <div class="form__box">
             <label for="price">Precio</label>
             <input type="number" name="price" id="price" value="<%= price %>"/>
+            <small class="text-danger ms-2">
+              <%= locals.errors && errors.price ? errors.price.msg : null%>
+            </small>
           </div>
           <div class="form__box">
             <label for="chef">Chef</label>
             <select name="chef" id="chef">
               <% chefs.forEach(({name}) => { %>
-              <option value="<%= name %>" <%= chef === name && 'selected'%>><%= name %></option>
+              <option value="<%= name %>"<%= chef === name && 'selected'%>><%= name %></option>
               <% }) %>
             </select>
+            <small class="text-danger ms-2"
+            ><%= locals.errors && errors.chef ? errors.chef.msg :
+            null%></small>
           </div>
           <div class="form__box">
             <label for="description">Descripcion</label>
             <textarea class="form__box__textarea" name="description" id="description"><%= description %></textarea>
+            <small class="text-danger ms-2">
+              <%= locals.errors && errors.description ? errors.description.msg : null %>
+            </small>
           </div>
           <div class="d-flex justify-content-around">
             <div class="form-check">
