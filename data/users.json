@@ -4,6 +4,15 @@
       "name": "carpincho",
       "surname": "filosofico",
       "email": "carpinchofilosofico@gmail.com",
-      "password": "$2a$10$0BmokKA8kwmIrlReT13QsOLhFkiETmZHgE9YumSn/Nbh.jQqsRY8a"
+      "password": "$2a$10$0BmokKA8kwmIrlReT13QsOLhFkiETmZHgE9YumSn/Nbh.jQqsRY8a",
+      "rol": "admin"
+   },
+   {
+      "id": 2,
+      "name": "thiago",
+      "surname": "delgado",
+      "email": "thiagodelgado.dev@gmail.com",
+      "password": "$2a$10$2KiNucYbw7fCMYZwdlSbxeXG/v4R/BbDF1Kc01TGGj6oTQTLD2sh.",
+      "rol": "user"
    }
 ]

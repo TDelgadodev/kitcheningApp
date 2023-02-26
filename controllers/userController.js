@@ -29,6 +29,7 @@ module.exports = {
         surname: surname.trim(),
         email: email.trim(),
         password: hashSync(password,10),
+        rol : 'user'
       }
       users.push(newUser);
       writeJSON('users.json',users);
@@ -63,13 +64,14 @@ module.exports = {
         name,
         rol
       }
-
+      
       console.log(req.session);
       return res.redirect('/')
     }else{
-      return res.render('login',{
+      return res.render('users/login',{
         title: 'Iniciar sesion',
-        errors: errors.mapped()
+        errors: errors.mapped(),
+        categories
       })
     }
 },
@@ -81,5 +83,9 @@ module.exports = {
   },
   update: (req, res) => {
     return res.send(req.body)
+  },
+  logout : (req, res) => {
+    req.session.destroy()
+    return res.redirect('/')
   },
 };
