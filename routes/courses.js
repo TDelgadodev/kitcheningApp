@@ -3,8 +3,7 @@ const router = express.Router();
 
 const {list, detail,category, edit, add, store, update, removeConfirm,remove} = require("../controllers/coursesController");
 const { uploadImagesCourse } = require("../middlewares/uploadIMG");
-const addCourseValidator = require("../validations/addCourseValidator");
-const editCourseValidator = require("../validations/editCourseValidator");
+const courseValidator = require("../validations/courseValidator");
 
 /* /courses */
 
@@ -13,9 +12,9 @@ router
     .get("/detail/:id", detail)
     .get('/category/:idCategory',category) 
     .get('/add',add)
-    .post('/add', uploadImagesCourse, addCourseValidator,store)
+    .post('/add', uploadImagesCourse, courseValidator,store)
     .get('/edit/:id',edit)
-    .put('/update/:id',uploadImagesCourse, editCourseValidator,update)
+    .put('/update/:id',uploadImagesCourse, courseValidator,update)
     .get('/remove/:id',removeConfirm)
     .delete('/remove/:id',remove)
 module.exports = router;

@@ -3,15 +3,31 @@
   <%- include('../partials/head') %>
   <body>
     <%- include('../partials/header')  %> 
-    <h1>Login</h1>
-    <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
+    <main class="login__main">
+      <div class="row mb-5">
+          <div class="col-12 col-md-8 mx-auto">
+              <div class="card shadow">
+                  <div class="card-header">
+                      <h5 class="card-title">Login de Usuario</h5>
+                  </div>
+                  <div class="card-body">
+                      <form action="" method="post">
+                          <div class="mb-3">
+                              <label for="email" class="form-label">Correo electrónico</label>
+                              <input type="email" class="form-control" id="email" name="email">
+                            </div>
+                            <div class="mb-3">
+                              <label for="password" class="form-label">Contraseña</label>
+                              <input type="password" class="form-control" id="password" name="password">
+                            </div>
+                            <button type="submit" class="buttons buttons__primary">Ingresar</button>
+                      </form>
+                    
+                  </div>
+              </div>
+          </div>
+      </div>
+    </main>
     <%- include('../partials/footer') %>
     <%- include('../partials/whatsapp') %>
   </body>

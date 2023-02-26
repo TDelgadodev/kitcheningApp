@@ -13,14 +13,14 @@ module.exports = [
     check('chef')
         .notEmpty().withMessage('Debes ingresar un chef'),
 
-    check('categories')
-        .notEmpty().withMessage('Debes ingresar una categoria'),
-
     check('description')
         .notEmpty().withMessage('La descripcion del curso es necesaria').bail()
         .isLength({min:20,max:85}).withMessage('La descripcion debe de tener entre 20 y 85 caracteres'),
 
     check('section')
-        .notEmpty().withMessage('¿A que seccion pertenece?') 
+        .notEmpty().withMessage('¿A que seccion pertenece?'),
+        
+    check('categories')
+        .notEmpty().withMessage('Debes ingresar una categoria').bail()    
     
 ]
