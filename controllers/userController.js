@@ -64,8 +64,9 @@ module.exports = {
         name,
         rol
       }
-      
-      console.log(req.session);
+      if(req.body.remember){
+        res.cookie('userKitchening', req.session.userLogin, {maxAge: 1000 * 60})
+      }
       return res.redirect('/')
     }else{
       return res.render('users/login',{
@@ -85,7 +86,7 @@ module.exports = {
     return res.send(req.body)
   },
   logout : (req, res) => {
-    req.session.destroy()
+    req.session.destroy();
     return res.redirect('/')
   },
 };

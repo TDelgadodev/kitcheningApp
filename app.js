@@ -10,7 +10,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const coursesRouter = require("./routes/courses");
 const localUserCheck = require("./middlewares/localUserCheck");
-
+const cookieCheck = require("./middlewares/cookieCheck"); 
 const app = express();
 
 app.set("views", path.join(__dirname, "views")).set("view engine", "ejs");
@@ -29,7 +29,8 @@ app
     saveUninitialized: true
   })
 )
-  .use(localUserCheck)
+   .use(cookieCheck)
+   .use(localUserCheck)
 
 /* rutas */
 app.use("/", indexRouter); // http://localhost:3000

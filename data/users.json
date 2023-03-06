@@ -1,18 +1,10 @@
 [
    {
       "id": 1,
-      "name": "carpincho",
-      "surname": "filosofico",
-      "email": "carpinchofilosofico@gmail.com",
-      "password": "$2a$10$0BmokKA8kwmIrlReT13QsOLhFkiETmZHgE9YumSn/Nbh.jQqsRY8a",
-      "rol": "admin"
-   },
-   {
-      "id": 2,
-      "name": "thiago",
-      "surname": "delgado",
+      "name": "Thiago",
+      "surname": "Delgado",
       "email": "thiagodelgado.dev@gmail.com",
-      "password": "$2a$10$2KiNucYbw7fCMYZwdlSbxeXG/v4R/BbDF1Kc01TGGj6oTQTLD2sh.",
+      "password": "$2a$10$si4mOt3dgh4JQ3KpfwzlvOoanNH6GXE8lV5tLYQwsw0uKoBdnE1hW",
       "rol": "user"
    }
 ]
