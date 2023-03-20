@@ -1,3 +1,4 @@
+require('dotenv').config();
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -21,7 +22,7 @@ app
   .use(express.urlencoded({ extended: false }))
   .use(cookieParser())
   .use(methodOverride("_method"))
-  .use(express.static(path.join(__dirname, "public")))
+  .use(express.static(path.join(__dirname, "..","public")))
   .use(
   session({
     secret: "CodeIsLove&War",
