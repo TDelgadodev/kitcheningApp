@@ -3,12 +3,12 @@ const courses = require("../data/courses.json");
 const categories = require("../data/categories.json");
 const chefs = require("../data/chefs.json");
 const { validationResult } = require("express-validator");
-
-const db = require('../database/models');
-
 const chefsSort = chefs.sort((a, b) =>
   a.name > b.name ? 1 : a.name < b.name ? -1 : 0
 );
+const db = require('../database/models');
+
+
 
 module.exports = {
   list: (req, res) => {
