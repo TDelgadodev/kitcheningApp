@@ -1,11 +1,7 @@
 <article class="home__main__section__article__animate__animated">
     <div class="home__main__section__article--imagen">
-      <img
-        class="home__main__section__article--imagen-product"
-        src="/images/courses/<%= image %>"
-        alt=""
-        height="250px"
-      />
+      <img class="home__main__section__article--imagen-product" src="/images/courses/<%= images.length ? images[0].name : 'image-not-available.png' %>" alt="">
+      </a>
       <img
         class="home__main__section__article--imagen-sticker"
         src="/images/<%= imgStatus %> "

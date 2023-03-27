@@ -4,7 +4,11 @@
       "title": "SUSHI PROFESIONAL",
       "price": 10530,
       "description": "Con una gran experiencia Roberto Nishida te enseña los secretos de las técnicas básicas en la elaboración del sushi, vas a descubrir la importancia de cada ingrediente para que realices una gran variedad de rolls, sashimis y niguiris.",
-      "image": "Sushi-web.webp",
+      "images": [
+         "Sushi-web.webp",
+         "Sushi-web.webp",         
+         "Sushi-web.webp"
+      ],
       "chef": "Roberto Nishida",
       "status": "newest",
       "imgStatus": "img-nuevo.png",
@@ -15,7 +19,11 @@
       "title": "ABC DE LA COCINA",
       "price": 11530,
       "description": "Tu comida puede transformarse en platos de restaurante de la mano de Guillermo Calabrese que te enseñará a combinar ingredientes simples con productos gourmet para darle un sabor distinto a tus recetas.",
-      "image": "abc.jpg",
+      "images": [
+            "abc.jpg",
+            "abc.jpg",
+            "abc.jpg"
+      ],
       "chef": "Guillermo Calabrese",
       "status": "newest",
       "imgStatus": "img-nuevo.png",
@@ -26,7 +34,11 @@
       "title": "ABC de la pasteleria",
       "price": 14330,
       "description": "Para aprender las bases de la Pastelería te enseñamos de manera fácil las técnicas principales para iniciarte en esta disciplina.",
-      "image": "ABC-de-la-pasteleria.jpg",
+      "images": [
+         "ABC-de-la-pasteleria.jpg",
+         "ABC-de-la-pasteleria.jpg",
+         "ABC-de-la-pasteleria.jpg"
+      ],
       "chef": "Claudio Gorriaran",
       "status": "descuento",
       "imgStatus": "img-descuento.png",
@@ -37,7 +49,11 @@
       "title": "Pastas y Salsas",
       "price": 720,
       "description": "Para los amantes de la pasta esta es una oportunidad de aprender a realizar las recetas más conocidas de la cocina italiana, te enseñamos el secreto del amasado de las pastas frescas con las salsas más sabrosas.",
-      "image": "product1.jpg",
+      "images": [
+         "product1.jpg",
+         "product1.jpg",
+         "product1.jpg"
+      ],
       "chef": "Mariano Martini",
       "status": "descuento",
       "imgStatus": "img-descuento.png",
@@ -48,7 +64,11 @@
       "title": "Panaderia Dulce",
       "price": 9720,
       "description": "Para hacer en tu casa o para vender, podés aprender a preparar las mejores facturas con nuestro Profesor Hernán que te enseña los ingredientes y la técnica correcta de amasado para que siempre te salgan perfectas.",
-      "image": "product2.jpg",
+      "images": [
+         "product2.jpg",
+         "product2.jpg",
+         "product2.jpg"       
+      ],
       "chef": "Hernan Perez Velazquez",
       "status": "descuento",
       "imgStatus": "img-descuento.png",
@@ -59,7 +79,11 @@
       "title": "ALIMENTACIÓN SALUDABLE",
       "price": 9720,
       "description": "Si querés comer rico y sano con estas recetas vas a aprender a combinar los ingredientes más nobles para crear platos que sean saludables y equilibrados.",
-      "image": "product3.jpg",
+      "images": [
+         "product3.jpg",
+         "product3.jpg",
+         "product3.jpg"
+      ],
       "chef": "Silvia Di Ciancio",
       "status": "descuento",
       "imgStatus": "img-descuento.png",
@@ -70,7 +94,11 @@
       "title": "Cocina Francesa",
       "price": 10530,
       "description": "En este curso desarrollará las recetas más representativas y emblemáticas de la cocina clásica francesa, identificando los productos propios de esta cocina, según su interpretación y combinación de sabores en un menú; utilizando una conjugación de técnicas tradicionales y modernas. El profesor de este curso es el reconocido chef francés Olivier Falchi.",
-      "image": "product4.jpg",
+      "images": [
+         "product4.jpg",
+         "product4.jpg",
+         "product4.jpg"
+      ],
       "chef": "Olivier Falchi",
       "status": "newest",
       "imgStatus": "img-nuevo.png",
@@ -81,7 +109,11 @@
       "title": "Cocina Española",
       "price": 10530.003,
       "description": "Entre paellas y cazuelas, los platos típicos de España llegan a tu mesa. Borja Blazquez te enseña los secretos de las mejores recetas de esta región para compartir con familiares y amigos.",
-      "image": "product5.jpg",
+      "images": [
+         "product5.jpg",
+         "product5.jpg",
+         "product5.jpg"
+      ],
       "chef": "Borja Blazquez",
       "status": "newest",
       "imgStatus": "img-nuevo.png",
@@ -92,7 +124,11 @@
       "title": "Cocina de Autor",
       "price": 10530,
       "description": "Para que puedas hacer pastas, pizzas y postres con un toque distinto, Roberto Petersen te enseña la forma fácil de darle un gusto especial a tus comidas preferidas.",
-      "image": "curso06.jpg",
+      "images": [
+         "curso06.jpg",
+         "curso06.jpg",
+         "curso06.jpg"
+      ],
       "chef": "Roberto Petersen",
       "status": "descuento",
       "imgStatus": "img-descuento.png",
@@ -103,7 +139,11 @@
       "title": "COCINA NATURAL",
       "price": "10530",
       "description": "PSi estás buscando una nueva forma de alimentarte, más consciente y sana para tu cuerpo, este curso te ayudará a incorporar las recetas vegetarianas para lograrlo. Mauro Massimino, egresado del instituto Gato Dumas y dueño de la cadena de restaurantes Buenos Aires Verde, te enseña cómo utilizar ingredientes saludables en sabrosas preparaciones y estar en armonía con la naturaleza.",
-      "image": "product6.jpg",
+      "images": [
+         "product6.jpg",
+         "product6.jpg",
+         "product6.jpg"
+      ],
       "chef": "Mauro Massimino",
       "status": "newest",
       "imgStatus": "img-nuevo.png",
@@ -114,7 +154,11 @@
       "title": "ABC DE LOS POSTRES",
       "price": 10530,
       "description": "Si querés disfrutar todos los días de los postres tradicionales ahora podés aprender con esta variedad de recetas y que siempre te salgan perfectos.",
-      "image": "product7.jpg",
+      "images": [
+         "product7.jpg",
+         "product7.jpg",
+         "product7.jpg"
+      ],
       "chef": "Fabian Mahr",
       "status": "newest",
       "imgStatus": "img-nuevo.png",
@@ -125,7 +169,11 @@
       "title": "COCTELERÍA Y BEBIDAS",
       "price": 9720,
       "description": "Si querés ser Bartender hay conocimientos que debes tener y el Cubano Vega te da la fórmula para que prepares los tragos y bebidas más pedidos.",
-      "image": "cocteleria.jpg",
+      "images": [
+         "cocteleria.jpg",
+         "cocteleria.jpg",
+         "cocteleria.jpg"
+      ],
       "chef": "Cubano Vega",
       "status": "descuento",
       "imgStatus": "img-descuento.png",
@@ -136,7 +184,11 @@
       "title": "COCINA NIKKEI",
       "price": 0,
       "description": "Si probaste con el sushi y conocés la cocina peruana, en este curso podés ampliar tu paladar con preparaciones de la cocina japonesa. Te enseñamos la técnica de combinar estos ingredientes y puedas ampliar tu cocina cada vez más.",
-      "image": "cocina-nikkei.jpg",
+      "images": [
+         "cocina-nikkei.jpg",
+         "cocina-nikkei.jpg",
+         "cocina-nikkei.jpg"
+      ],
       "chef": "Gabriel Pedreira",
       "status": "gratis",
       "imgStatus": "img-gratis.png",
@@ -147,7 +199,11 @@
       "title": "Panaderia Casera",
       "price": 10530,
       "description": "En este curso aprenderás todas las tecnicas básicas de la panadería casera y artesanal. En cada elaboración tendrás un soporte teórico y demostrativo para comprender el proceso que se realiza en cada producto, las diferentes formas y el paso a paso fundamental de las variedades más relevantes de la panadería.",
-      "image": "curso04.webp",
+      "images": [
+         "curso04.webp",
+         "curso04.webp",
+         "curso04.webp"
+      ],
       "chef": "Fabian Mahr",
       "status": "sale",
       "imgStatus": null,

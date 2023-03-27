@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(1000)
       },
       free: {
         type: Sequelize.BOOLEAN
@@ -30,7 +30,7 @@ module.exports = {
       chefId: {
         type: Sequelize.INTEGER,
         references : {
-          model : {
+          model :{
             tableName : "Chefs"
           },
           key : 'id'
@@ -44,10 +44,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      deleteAt: {
-        allowNull: true,
+      deletedAt: {
+        allowNull: false,
         type: Sequelize.DATE
-      } 
+      }
     });
   },
   async down(queryInterface, Sequelize) {

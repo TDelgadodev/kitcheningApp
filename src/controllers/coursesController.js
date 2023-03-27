@@ -1,8 +1,10 @@
 const fs = require("fs");
 const courses = require("../data/courses.json");
+const {readJSON} = require('../data');
 const categories = require("../data/categories.json");
 const chefs = require("../data/chefs.json");
 const { validationResult } = require("express-validator");
+
 const chefsSort = chefs.sort((a, b) =>
   a.name > b.name ? 1 : a.name < b.name ? -1 : 0
 );
@@ -12,7 +14,7 @@ const db = require('../database/models');
 
 module.exports = {
   list: (req, res) => {
-    const courses = JSON.parse(fs.readFileSync("./data/courses.json", "utf-8"));
+    const courses =  readJSON('courses.json')
     return res.render("courses/list", {
       title: "Lista de cursos",
       categories,
@@ -21,12 +23,11 @@ module.exports = {
   },
   detail: (req, res) => {
     const { id } = req.params;
-    const courses = JSON.parse(fs.readFileSync("./data/courses.json", "utf-8"));
+    const courses = readJSON('courses.json'); 
     const course = courses.find((course) => course.id === +id);
     return res.render("courses/detail", {
       title: "Detalle del curso",
       ...course,
-      courses,
       categories,
     });
   },
@@ -68,7 +69,7 @@ module.exports = {
         price: +price,
         description: description.trim(),
         chef,
-        images: req.files.map((file) => file.filename),
+        images: req.files.map(file => file.filename),
         status:
           (section === "sale" && "sale") ||
           (section === "free" && "free") ||
@@ -136,7 +137,7 @@ module.exports = {
         title: title.trim(),
         price: +price,
         description: description.trim(),
-        image: course.image,
+        images: req.files.length ? req.files.map(file => file.filename) : course.images,
         chef,
         status:
           (section === "sale" && "sale") ||

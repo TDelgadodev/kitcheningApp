@@ -1,0 +1,32 @@
+[
+  {
+    "address": "8th Floor",
+    "city": "Jamaica",
+    "province": "New York",
+    "zipcode": 2948
+  },
+  {
+    "address": "Room 1493",
+    "city": "Chicago",
+    "province": "Illinois",
+    "zipcode": 6249
+  },
+  {
+    "address": "Room 827",
+    "city": "Manassas",
+    "province": "Virginia",
+    "zipcode": 9360
+  },
+  {
+    "address": "PO Box 996",
+    "city": "Denver",
+    "province": "Colorado",
+    "zipcode": 1498
+  },
+  {
+    "address": "Suite 31",
+    "city": "Naples",
+    "province": "Florida",
+    "zipcode": 2632
+  }
+]

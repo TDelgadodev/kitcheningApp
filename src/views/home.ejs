@@ -81,11 +81,11 @@
       <h2>Ultimos agregados</h2>
       <hr />
       <section class="home__main__section--productos">
-        <% newCourses.forEach(({image,imgStatus,title,id}) => { %>
+        <% newCourses.forEach(({images,imgStatus,title,id}) => { %>
           <%- include('./partials/courseArticle',{
             title,
             id,
-            image,
+            images,
             imgStatus
           }) %> 
         <% }) %>
@@ -93,11 +93,11 @@
       <h2>Productos en Oferta</h2>
       <hr />
       <section class="home__main__section--productos">
-        <% oferCourses.forEach(({id,title,image,imgStatus})=> { %>
+        <% oferCourses.forEach(({id,title,images,imgStatus})=> { %>
           <%- include('./partials/courseArticle',{
             id,
             title,
-            image,
+            images,
             imgStatus
           })  %> 
         <% }) %>
@@ -106,20 +106,15 @@
       <section class="home__main__section--courses">
         <div class="glider-contain">
           <div class="glider">
-            <% courses.forEach(({title,image,id}) => { %>
-            <a href="courses/detail/<%= id %> ">
-              <div class="card carousel-courses-item">
-                <img
-                  src="/images/courses/<%= image %> "
-                  class="card-img-top"
-                  alt="..."
-                  height="190px"
-                />
-                <div class="card-body">
-                  <h5 class="card-title text-dark" style="font-size: 19px;"><%= title %> </h5>
+            <% courses.forEach(({title,images,id}) => { %>
+              <a href="/courses/detail/<%= id %>">
+                <div class="card carousel-courses-item" style="height: 40vh;">
+                  <img src="/images/courses/<%= images.length ? images[0].name : 'image-not-available.png' %>" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title text-dark"><%= title %></h5>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </a>
             <% }) %>
           </div>
 

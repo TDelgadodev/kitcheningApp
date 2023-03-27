@@ -8,12 +8,12 @@
     <main class="home__main">
       <section class="home__main__section--productos">
         <!-- productos -->
-        <% courses.forEach(({id,title,price,image,imgStatus,chef}) => { %>
+        <% courses.forEach(({id,title,price,images,imgStatus,chef}) => { %>
         <article class="home__main__section__article animate__animated">
           <div class="home__main__section__article--imagen">
             <img
               class="home__main__section__article--imagen-product"
-              src="/images/courses/<%= image ? image : 'image-not-available.jpg' %>"
+              src="/images/courses/<%= images ? images : 'image-not-available.jpg' %>"
               alt=""
               height="260px"
             />

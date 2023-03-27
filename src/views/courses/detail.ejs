@@ -3,32 +3,55 @@
   <%- include('../partials/head') %>
   <body>
     <%- include('../partials/header') %>
-    <section class="home__main__section--productos">
-      <article class="home__main__section__article animate__animated">
-        <div class="home__main__section__article--imagen">
-          <img
-            class="home__main__section__article--imagen-product"
-            src="/images/courses/<%= image ? image : 'image-not-available.png'%> "
-            alt=""
-          />
-          <img
-            class="home__main__section__article--imagen-sticker"
-            src="/images/img-nuevo.png"
-            alt=""
-          />
-        </div>
-        <div class="home__main__section__article--contenido">
-          <h4><%= title %></h4>
-          <p><%= description %></p>
-          <p><%= chef %></p>
-          <p><%= price %></p>
-        </div>
-        <div class="d-flex gap-2">
-          <a class="btn btn-success" href="/courses/edit/<%= id %>">Editar</a>
-          <a class="btn btn-danger" href="/courses/remove/<%= id %>">Eliminar</a>
-        </div>
-      </article>
-    </section>
+    <main class="form__main">
+     
+      <h2>Detalle del Curso</h2>
+      <hr>
+      <div class="row">
+         <div class="col-12 col-md-10 mx-auto">
+             <div class="card mb-3">
+                 <div class="row g-0">
+                   <div class="col-md-4">
+                     <div class="d-flex flex-column gap-1">
+                       <img src="/images/courses/<%= images.length ? images[0] : 'not-image.png' %>" height="300px" class=" rounded-start" alt="..." id="imgMain" style="object-fit:cover;">
+                       <div class="d-flex flex-row justify-content-between  flex-wrap gap-1">
+                         <% images.forEach(image => { %>
+                           <img width="32%" src="/images/courses/<%= image ? image : 'not-image.png' %>" class="img-fluid" alt="..." style="object-fit: cover;" onclick="document.getElementById('imgMain').setAttribute('src',this.src)">
+                         <% }) %>
+                        
+                       </div>
+                     </div>
+                     
+                   </div>
+                   <div class="col-md-8">
+                     <div class="card-body">
+                       <div class="d-flex justify-content-between">
+                         <div class="d-flex flex-column">
+                           <h5 class="card-title"><%= title %></h5>
+                           <p class="text-muted">by <%= chef %></p>
+                         </div>
+                         
+                         <h3>$<%= price %></h3>
+                       </div>
+                       <hr>
+                       <div class="d-flex flex-column align-items-end" style="height:300px">
+                         <p class="card-text mt-5"><%= description %></p>
+                         <button class="btn btn-dark mt-auto">Comprar</button>
+                       </div>
+                       
+                     
+                     <div>
+ 
+                     </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+         </div>
+ 
+      </div>
+ 
+       </main>
     <%- include('../partials/footer') %> <%- include('../partials/whatsapp') %>
   </body>
 </html>

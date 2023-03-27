@@ -2,61 +2,79 @@
   { 
     "id":1,
     "name": "Roberto Nishida",
-    "photo": ""
+    "photo": "default-user.webp",
+    "country" : "Japón"
   },
   { 
     "id":2,
     "name": "Guillermo Calabrese",
-    "photo": ""
+    "photo": "default-user.webp",
+    "country" : "Italia"
   },
   { 
     "id":3,
     "name": "Claudio Gorriaran",
-    "photo": ""
+    "photo": "default-user.webp",
+    "country" : "España"
   },
   { 
     "id":4,
     "name": "Mariano Martini",
-    "photo": ""
+    "photo": "default-user.webp",
+    "country" : "Italia"
   },
   { 
     "id":5,
     "name": "Hernan Perez Velazquez",
-    "photo": ""
+    "photo": "default-user.webp",
+    "country" : "Argentina"
   },
   { 
     "id":6,
     "name": "Silvia Di Ciancio",
-    "photo": ""
+    "photo": "default-user.webp",
+    "country" : "Italia"
   },
   { 
     "id": 7,
     "name": "Olivier Falchi",
-    "photo": ""
+    "photo": null,
+    "country" : "Italia"
   },
   { 
     "id":8,
     "name": "Borja Blazquez",
-    "photo": ""
+    "photo": null,
+    "country" : "Italia"
   },
   { 
     "id":9,
     "name": "Roberto Petersen",
-    "photo": ""
+    "photo": null,
+    "country" : "EEUU"
   },
   { 
     "id":10,
     "name": "Mauro Massimino",
-    "photo": ""
+    "photo": null,
+    "country" : "España"
   },
   { 
     "id":11,
     "name": "Fabian Mahr",
-    "photo": ""
+    "photo": "default-user.webp",
+    "country" : "España"
   },
   { 
     "id":12,
     "name": "Cubano Vega",
-    "photo": ""
+    "photo": "default-user.webp",
+    "country" : "Cuba"
+  },
+  { 
+    "id":13,
+    "name": "Gabriel Pedreira",
+    "photo": "default-user.webp",
+    "country" : "Ecuador"
   }
 ]
