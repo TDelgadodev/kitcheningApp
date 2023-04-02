@@ -4,22 +4,29 @@ const {readJSON} = require('../data');
 const categories = require("../data/categories.json");
 const chefs = require("../data/chefs.json");
 const { validationResult } = require("express-validator");
+const db = require('../database/models');
 
 const chefsSort = chefs.sort((a, b) =>
   a.name > b.name ? 1 : a.name < b.name ? -1 : 0
 );
-const db = require('../database/models');
 
 
 
 module.exports = {
   list: (req, res) => {
-    const courses =  readJSON('courses.json')
-    return res.render("courses/list", {
-      title: "Lista de cursos",
-      categories,
-      courses: courses.filter((course) => course.visible),
-    });
+    db.Course.findAll({
+      where : {
+        visible : true
+      },
+      include : ['images']
+    })
+      .then(courses => {
+        return res.render("courses/list", {
+          title: "Lista de cursos",
+          courses
+        });
+      })
+      .catch(error => console.log(error))
   },
   detail: (req, res) => {
     const { id } = req.params;

@@ -10,7 +10,7 @@ const courses = coursesJSON.map(({title,price,description, free,visible,chef}) =
   return {
     title,
     price,
-    discount: 0,
+    discount,
     description, 
     free,
     visible,

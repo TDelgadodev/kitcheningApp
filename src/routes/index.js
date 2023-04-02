@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const {home} = require('../controllers/indexController')
+const {home, admin} = require('../controllers/indexController');
+const checkUserAdmin = require('../middlewares/checkUserAdmin');
 
 /* / */
 router.get('/', home);
+router.get('/admin',checkUserAdmin,admin)
 
 module.exports = router;

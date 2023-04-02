@@ -14,7 +14,7 @@
       <li>
         <a href="/courses/list">Cursos</a>
       </li>
-      <% if (locals.userLogin && userLogin.role === 'admin') { %>
+      <% if (locals.userLogin && userLogin.role === 1) { %>
       <li>
         <a href="/courses/add">Agregar</a>
       </li>
@@ -38,23 +38,4 @@
       <% } %>
     </ul>
   </nav>
-  <div class="dropdown">
-    <button
-      class="btn btn-secondary dropdown-toggle"
-      type="button"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
-      Categorias
-    </button>
-    <ul class="dropdown-menu">
-      <% categories.forEach(({id,name}) => { %>
-      <li>
-        <a href="/courses/category/<%= id %>" style="color: black"
-          ><%= name %>
-        </a>
-      </li>
-      <% }) %>
-    </ul>
-  </div>
 </header>

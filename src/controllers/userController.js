@@ -59,15 +59,27 @@ module.exports = {
 
       const {id,name,rol} = readJSON('users.json').find(user => user.email === req.body.email)
 
-      req.session.userLogin = {
-        id,
-        name,
-        rol
-      }
-      if(req.body.remember){
+
+      db.User.findOne({
+        where : {
+          email :  req.body.email
+        }
+      }).then(({id,name,rolId}) =>{
+          req.session.userLogin = {
+            id,
+            name,
+            rol : rolId
+          };
+          
+        if(req.body.remember){
         res.cookie('userKitchening', req.session.userLogin, {maxAge: 1000 * 60})
-      }
-      return res.redirect('/')
+        }   
+        return res.redirect('/')
+      })
+
+ 
+ 
+      
     }else{
       return res.render('users/login',{
         title: 'Iniciar sesion',
