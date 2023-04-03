@@ -2,25 +2,27 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Images', {
+    await queryInterface.createTable('orders', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
+      date: {
+        type: Sequelize.DATE
       },
-      courseId: {
+      total: {
+        type: Sequelize.INTEGER
+      },
+      userId: {
         type: Sequelize.INTEGER,
         references : {
           model : {
-            tableName : "Courses"
+            tableName : 'Users'
           },
           key : 'id'
-        },
-        onDelete : 'Cascade'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -29,14 +31,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      deleteAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      } 
+      }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Images');
+    await queryInterface.dropTable('Orders');
   }
 };

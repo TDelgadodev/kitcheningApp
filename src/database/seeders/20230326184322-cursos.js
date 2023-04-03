@@ -4,13 +4,14 @@
 
 const coursesJSON = require('../../data/courses.json');
 const chefs = require('../../data/chefs.json');
+const {getRandomDiscount} = require('../../tools/randomNum')
 
 
-const courses = coursesJSON.map(({title,price,description, free,visible,chef}) =>{
+const courses = coursesJSON.map(({title,price,description,discount, free,visible,chef}) =>{
   return {
     title,
     price,
-    discount,
+    discount : getRandomDiscount(5,80),
     description, 
     free,
     visible,

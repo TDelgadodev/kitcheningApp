@@ -5,11 +5,11 @@ const categories = require("../data/categories.json");
 const chefs = require("../data/chefs.json");
 const { validationResult } = require("express-validator");
 const db = require('../database/models');
+const {calculateDiscountPrice} = require('../tools/calculateDiscountPrice ')
 
 const chefsSort = chefs.sort((a, b) =>
   a.name > b.name ? 1 : a.name < b.name ? -1 : 0
 );
-
 
 
 module.exports = {
@@ -30,13 +30,27 @@ module.exports = {
   },
   detail: (req, res) => {
     const { id } = req.params;
-    const courses = readJSON('courses.json'); 
-    const course = courses.find((course) => course.id === +id);
-    return res.render("courses/detail", {
+    db.Course.findByPk(id,{
+      include : [
+        {
+          association : 'images',
+          attributes : ['name']
+        },
+        {
+          association : 'chef',
+          attributes : ['name']
+        }
+    ]
+    })
+    .then(course =>{
+      //return res.send(course)
+      return res.render("courses/detail", {
       title: "Detalle del curso",
-      ...course,
-      categories,
+      ...course.dataValues,
+      calculateDiscountPrice
     });
+  })      
+    .catch(error => console.log(error))
   },
   category: (req, res) => {
     const { idCategory } = req.params;
