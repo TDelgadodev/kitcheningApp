@@ -20,25 +20,29 @@
                             <thead>
                               <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Curso</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Chef</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Admin</th>
                                 <th scope="col">Acciones</th>
-
                               </tr>
                             </thead>
                             <tbody>
-                                <% courses.forEach(({id, title,price,chef}) => { %>
+                                <% users.forEach(({id, name,surname, email,rolId}) => { %>
                                     <tr>
                                         <th scope="row"><%= id %></th>
-                                        <td><%= title %></td>
-                                        <td><%= price %></td>
-                                        <td><%= chef %></td>
+                                        <td><%= name %></td>
+                                        <td><%= surname %></td>
+                                        <td><%= email %></td>
+                                        <td>
+                                          <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" <%= rolId === 1 && 'checked' %> <%= locals.userLogin.id === id &&'disabled' %>>
+                                          </div>  
+                                        </td>
                                         <td>
                                            <div class="d-flex gap-2">
-                                            <a class="btn btn-sm btn-primary" href="/courses/detail/<%= id %>"><i class="far fa-eye"></i></a>
-                                            <a class="btn btn-sm btn-success" href="/courses/edit/<%= id %>"><i class="far fa-edit"></i></a>
-                                            <a class="btn btn-sm btn-danger" href="/courses/remove/<%= id %>"><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-sm btn-primary" href="/users/profile"><i class="far fa-eye"></i></a>
+                                            <a class="btn btn-sm btn-danger" href="/users/remove/<%= id %>"><i class="fas fa-trash"></i></a>
                                            </div> 
                                         </td>
                                       </tr>

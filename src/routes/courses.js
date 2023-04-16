@@ -15,6 +15,5 @@ router
     .post('/add', uploadImagesCourse, courseValidator,store)
     .get('/edit/:id',edit)
     .put('/update/:id',uploadImagesCourse, courseValidator,update)
-    .get('/remove/:id',removeConfirm)
     .delete('/remove/:id',remove)
 module.exports = router;

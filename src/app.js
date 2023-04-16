@@ -6,6 +6,8 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const methodOverride = require("method-override");
 const session = require("express-session");
+const bodyParser = require('body-parser');
+
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
@@ -32,6 +34,8 @@ app
 )
    .use(cookieCheck)
    .use(localUserCheck)
+   .use(bodyParser.json());
+
 
 /* rutas */
 app.use("/", indexRouter); // http://localhost:3000

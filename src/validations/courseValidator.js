@@ -12,6 +12,9 @@ module.exports = [
 
     check('chef')
         .notEmpty().withMessage('Debes ingresar un chef'),
+    
+    check('category')
+        .notEmpty().withMessage('Cual es la categoria'),
 
     check('description')
         .notEmpty().withMessage('La descripcion del curso es necesaria').bail()

@@ -1,15 +1,11 @@
 const fs = require("fs");
-const courses = require("../data/courses.json");
-const {readJSON} = require('../data');
-const categories = require("../data/categories.json");
-const chefs = require("../data/chefs.json");
 const { validationResult } = require("express-validator");
 const db = require('../database/models');
 const {calculateDiscountPrice} = require('../tools/calculateDiscountPrice ')
 
-const chefsSort = chefs.sort((a, b) =>
+/* const chefsSort = chefs.sort((a, b) =>
   a.name > b.name ? 1 : a.name < b.name ? -1 : 0
-);
+); */
 
 
 module.exports = {
@@ -53,7 +49,9 @@ module.exports = {
     .catch(error => console.log(error))
   },
   category: (req, res) => {
-    const { idCategory } = req.params;
+    
+    return res.send(req.body)
+
     const coursesFound = courses.filter(
       (course) => course.categoryId === idCategory
     );
@@ -64,10 +62,31 @@ module.exports = {
     });
   },
   add: (req, res) => {
-    return res.render("courses/formAdd", {
-      categories,
-      chefs: chefsSort,
-    });
+   const chefs = db.Chefs.findAll({
+      order : [
+        ['name']
+      ], 
+      attributes : ['name','id']
+    })
+
+    const categories = db.Category.findAll({
+      order : [
+        ['name']
+      ],
+      attributes : ['names']
+    })
+
+
+    Promise.all([chefs,categories])
+    
+    .then(([chefs,categories]) =>{
+      return res.render('formAdd',{
+        chefs,
+        categories
+      })
+    })
+    .catch(error => console.log(error))
+
   },
   store: (req, res) => {
     const errors = validationResult(req);
@@ -81,29 +100,33 @@ module.exports = {
       });
     }
     if (errors.isEmpty()) {
-      const { title, price, description, section, chef, visible, categoryId } =
-        req.body;
-      const newCourse = {
-        id: courses[courses.length - 1].id + 1,
-        categoryId: categoryId,
+      const { title, price, discount,description,chef, category } = req.body;
+
+      db.Course.create({
         title: title.trim(),
-        price: +price,
+        price,
+        discount,
         description: description.trim(),
-        chef,
-        images: req.files.map(file => file.filename),
-        status:
-          (section === "sale" && "sale") ||
-          (section === "free" && "free") ||
-          (section == "newest" && "newest"),
-        visible: visible ? true : false,
-      };
-      courses.push(newCourse);
-      fs.writeFileSync(
-        "./data/courses.json",
-        JSON.stringify(courses, null, 3),
-        "utf-8"
-      );
-      return res.redirect("/courses/list");
+        chefId : chef,
+        categoryId : category,
+        free : free ? true : false,
+        visible : visible ? true : false
+      })
+      .then( course =>{
+        
+        req.files.forEach((image,index) =>{
+            db.Image.create({
+              name : image.filename,
+              courseId : course.id,
+              primary : index === 0 ? true : false
+          })       
+        })
+
+
+        return res.redirect("/courses/list");
+      })
+      .catch(error => console.log(error))
+  
     } else {
       if (req.files.length) {
         req.files.forEach((file) => {
@@ -127,12 +150,29 @@ module.exports = {
   },
   edit: (req, res) => {
     const { id } = req.params;
-    const course = courses.find((course) => course.id === +id);
-    return res.render("courses/formEdit", {
-      categories,
-      ...course,
-      chefs: chefsSort,
-    });
+    const chefs = db.Chef.findAll({
+      order : [
+        ['name']
+      ],
+      attributes : ['name','id']
+    })
+
+    const categories = db.Category.findAll({
+      order : [['name']],
+      attributes : ['name','id']
+    })
+    
+    Promise.all([chefs,categories])
+    .then(([chefs,categories]) =>{
+      return res.render('formEdit',{
+        chefs,
+        categories
+      })
+    })
+    .catch(error => console.log(error))
+
+
+
   },
   update: (req, res) => {
     const errors = validationResult(req);
@@ -147,10 +187,21 @@ module.exports = {
     }
 
     if (errors.isEmpty()) {
-      const { title, price, description, section, chef, visible, categoryId } =
-        req.body;
-      const id = +req.params.id;
-      const course = courses.find((course) => course.id === id);
+      const { title, price, description, chef, visible, categoryId } = req.body;
+
+
+      db.Course.create(
+        {
+          title : title.trim(),
+          price,
+          discount
+        }
+        
+        ).then( ()=>{
+
+        })
+
+
 
       const courseUpdated = {
         id,
@@ -191,22 +242,31 @@ module.exports = {
       });
     }
   },
-  removeConfirm: (req, res) => {
+  remove: async (req, res) => {
     const id = req.params.id;
-    const course = courses.find((course) => course.id === +id);
-    return res.render("courses/confirmRemove", {
-      ...course,
-      categories,
-    });
-  },
-  remove: (req, res) => {
-    const id = req.params.id;
-    const courseDelete = courses.filter((course) => course.id !== +id);
-    fs.writeFileSync(
-      "./data/courses.json",
-      JSON.stringify(courseDelete, null, 3),
-      "utf-8"
-    );
-    return res.redirect("/courses/list");
+
+    const course = await db.Course.findByPk(id,{
+      include : {all : true}
+    })
+
+    db.Comment.destroy({
+
+      where: {
+        courseId : id
+      }
+      
+    }).then( ()=>{
+
+        db.Course.destroy({
+          where : {
+            id
+          }
+
+        })
+          .then(result =>{
+            return res.redirect("/admin");
+          })     
+    })
+      .catch(error => console.log(error))
   },
 };
