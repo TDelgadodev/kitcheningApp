@@ -6,17 +6,13 @@ module.exports = {
     getAllUsers : async (req) =>{
         try {
             const users = await db.User.findAll({
-                include : [
-                    {
-                        association : "rol",
-                    },
-                    {
-                        association : "address",
-                    }
-                ],
-            })
+                attributes: {
+                    exclude: ["pass", "addressId", "rolId"]
+                }
+            });
 
             return users
+
         } catch (error) {
             console.log(error)
             throw {
@@ -25,8 +21,28 @@ module.exports = {
             }
         }
     },
-    getUserById : async (req,res) =>{
+    getUserById : async (id) =>{
+        try {
 
+            const user = await db.User.findByPk(id,{
+                include : [
+                    {
+                        association : "rol",
+                    },
+                    {
+                        association : 'address',
+                    }
+                ]
+            });
+            return user
+
+        } catch (error) {
+            console.log(error)
+            throw {
+                status : 500,
+                message : error.message,
+            }
+        }
     },
     verifyUserByEmail : async (email) =>{
         try {

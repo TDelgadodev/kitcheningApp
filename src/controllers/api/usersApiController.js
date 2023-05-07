@@ -3,13 +3,12 @@ const {verifyUserByEmail, getAllUsers, getUserById} = require('../../services/us
 module.exports = {
 
     
-    index: async() =>{
+    index: async(req,res) =>{
         try {
-            const users = getAllUsers(req);
+            const users = await getAllUsers(req);
             return res.status(200).json({
                 ok : true,
                 data : {
-                    count,
                     users
                 }
                }) 
@@ -24,14 +23,14 @@ module.exports = {
             })
         }
     },
-    detail: async() =>{
+    detail: async(req,res) =>{
         try {
-            const user = await getUserById(req,req.params.id);
+            const user = await getUserById(req.params.id);
 
             if(!user){
                 throw {
                     status : 404,
-                    message : "Curso no encontrado"
+                    message : "Usuario no encontrado"
                 }
             }
     

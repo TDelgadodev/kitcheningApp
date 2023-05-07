@@ -4,7 +4,7 @@ module.exports = {
     
     index : async (req,res) =>{
         try {
-           const courses = await getAllCourses(req);
+           const {count,courses} = await getAllCourses(req);
            
            return res.status(200).json({
             ok : true,
