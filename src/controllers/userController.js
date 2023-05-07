@@ -100,52 +100,48 @@ module.exports = {
       .catch(error => console.log(error))
   },
   update: async (req, res) => {
-      //console.log(req.session.userLogin);
-      //console.log(typeof req.body);
-      //return res.send(req.body);
-
     const {name, surname, address, city, province, zipCode} = req.body;
-    const {id} = req.session.userLogin.id
+    const {id} = req.session.userLogin;
 
-    await db.User.findByPk(req.session.userLogin.id)
-      .then(user => {
-
-        const addressUpdate = db.Address.update(
-            {
-                address : address ? address.trim() : null,
-                city : city ? city.trim() : null,
-                province: province ? province.trim() : null,
-                zipCode : zipCode ? zipCode : null
-            },
-            {
-                where : {
-                    id : user.addressId
+   db.User.findByPk(id)
+        .then(user => {
+          //console.log(user);
+          //return res.send(user)
+            const addressUpdate = db.Address.update(
+                {
+                    address : address ? address.trim() : null,
+                    city : city ? city.trim() : null,
+                    province: province ? province.trim() : null,
+                    zipCode : zipCode ? zipCode : null
+                },
+                {
+                    where : {
+                        id : user.addressId
+                    }
                 }
-            }
-        )
-
-         const userUpdate = db.User.update(
-            {
-                name : name,
-                surname : surname,
-                image : req.file ? req.file.filename : user.image
-            },
-            {
-                where : {
-                    id : id
+            )
+            const userUpdate = db.User.update(
+                {
+                    name : name,
+                    surname : surname,
+                    image : req.file ? req.file.filename : user.image
+                },
+                {
+                    where : {
+                        id
+                    }
                 }
-            }
-        )
+            )
 
+            Promise.all(([addressUpdate, userUpdate]))
+                .then( ()=> {
 
-        Promise.all(([addressUpdate, userUpdate]))
-            .then( ()=> {
-                  (req.file && fs.existsSync('public/images/users/' + user.image)) && fs.unlinkSync('public/images/users/' + user.image)
-                  req.session.message = "Datos actualizados"
-                  return res.redirect('/users/profile')
-            })
-      }).catch(error => console.log(error))
-          
+                    (req.file && fs.existsSync('public/images/users/' + user.image)) && fs.unlinkSync('public/images/users/' + user.image)
+
+                    req.session.message = "Datos actualizados"
+                    return res.redirect('/users/profile')
+                })
+        }).catch(error => console.log(error))
   },
   logout: (req, res) => {
     req.session.destroy();

@@ -41,6 +41,9 @@ app
 app.use("/", indexRouter); // http://localhost:3000
 app.use("/users", usersRouter); //http://localhost:3000/users
 app.use("/courses", coursesRouter); // http:localhost:3000/courses
+app.use("/api/courses",require('./routes/api/courseApi'));
+app.use("/api/users",require('./routes/api/usersApi'));
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -3,10 +3,6 @@ const { validationResult } = require("express-validator");
 const db = require('../database/models');
 const {calculateDiscountPrice} = require('../tools/calculateDiscountPrice ')
 
-/* const chefsSort = chefs.sort((a, b) =>
-  a.name > b.name ? 1 : a.name < b.name ? -1 : 0
-); */
-
 
 module.exports = {
   list: (req, res) => {
@@ -30,7 +26,7 @@ module.exports = {
       include : [
         {
           association : 'images',
-          attributes : ['name']
+          attributes : ['name','primary']
         },
         {
           association : 'chef',
@@ -43,6 +39,7 @@ module.exports = {
       return res.render("courses/detail", {
       title: "Detalle del curso",
       ...course.dataValues,
+      imgPrimary : course.images.find(image => image.primary),
       calculateDiscountPrice
     });
   })      
@@ -62,7 +59,7 @@ module.exports = {
     });
   },
   add: (req, res) => {
-   const chefs = db.Chefs.findAll({
+   const chefs = db.Chef.findAll({
       order : [
         ['name']
       ], 
@@ -73,14 +70,14 @@ module.exports = {
       order : [
         ['name']
       ],
-      attributes : ['names']
+      attributes : ['name']
     })
 
 
     Promise.all([chefs,categories])
-    
     .then(([chefs,categories]) =>{
-      return res.render('formAdd',{
+      return res.render('courses/formAdd',{
+        title : 'Kitchening | Agregar producto',
         chefs,
         categories
       })
@@ -91,65 +88,90 @@ module.exports = {
   store: (req, res) => {
     const errors = validationResult(req);
 
-    if (!req.files.length) {
+    if (!req.files.length && !req.fileValidationError) {
       errors.errors.push({
         value: "",
-        msg: "El producto require de por lo menos una imagen",
-        param: "image",
-        location: "file",
+        msg: "El producto debe tener por lo menos una imagen",
+        param: "images",
+        location: "files",
       });
     }
+
+    if (req.fileValidationError) {
+      errors.errors.push({
+        value: "",
+        msg: req.fileValidationError,
+        param: "images",
+        location: "files",
+      });
+    }
+
     if (errors.isEmpty()) {
-      const { title, price, discount,description,chef, category } = req.body;
+      const {
+        title,
+        price,
+        discount,
+        description,
+        chef,
+        category,
+        visible,
+        free,
+      } = req.body;
 
       db.Course.create({
         title: title.trim(),
         price,
         discount,
         description: description.trim(),
-        chefId : chef,
-        categoryId : category,
-        free : free ? true : false,
-        visible : visible ? true : false
+        chefId: chef,
+        categoryId: category,
+        free: free ? true : false,
+        visible: visible ? true : false,
       })
-      .then( course =>{
-        
-        req.files.forEach((image,index) =>{
+        .then((course) => {
+          req.files.forEach((image, index) => {
             db.Image.create({
-              name : image.filename,
-              courseId : course.id,
-              primary : index === 0 ? true : false
-          })       
+              name: image.filename,
+              courseId: course.id,
+              primary: index === 0 ? true : false,
+            });
+          });
+
+          return res.redirect("/courses/list");
         })
-
-
-        return res.redirect("/courses/list");
-      })
-      .catch(error => console.log(error))
-  
+        .catch((error) => console.log(error));
     } else {
+      const chefs = db.Chef.findAll({
+        order: [["name"]],
+        attributes: ["name", "id"],
+      });
+
+      const categories = db.Category.findAll({
+        order: [["name"]],
+        attributes: ["name", "id"],
+      });
+
       if (req.files.length) {
         req.files.forEach((file) => {
           fs.existsSync(`./public/images/courses/${file.filename}`) &&
-          fs.unlinkSync(`./public/images/courses/${file.filename}`);
+            fs.unlinkSync(`./public/images/courses/${file.filename}`);
         });
       }
-      const categories = require("../data/categories.json");
-      const chefs = require("../data/chefs.json");
-      const chefsSort = chefs.sort((a, b) =>
-        a.name > b.name ? 1 : a.name < b.name ? -1 : 0
-      );
 
-      return res.render("courses/formAdd", {
-        categories,
-        chefs: chefsSort,
-        errors: errors.mapped(),
-        old: req.body,
-      });
+      Promise.all([chefs, categories])
+        .then(([chefs, categories]) => {
+          return res.render("courses/formAdd", {
+            chefs,
+            categories,
+            errors: errors.mapped(),
+            old: req.body,
+          });
+        })
+        .catch((error) => console.log(error));
     }
   },
   edit: (req, res) => {
-    const { id } = req.params;
+    const { id } = req.params.id;
     const chefs = db.Chef.findAll({
       order : [
         ['name']
@@ -170,76 +192,122 @@ module.exports = {
       })
     })
     .catch(error => console.log(error))
-
-
+    
 
   },
   update: (req, res) => {
     const errors = validationResult(req);
 
-    if(req.fileValidationError){
+    if (req.fileValidationError) {
       errors.errors.push({
         value: "",
         msg: req.fileValidationError,
         param: "images",
-        location: "files"
-      })
+        location: "files",
+      });
     }
 
     if (errors.isEmpty()) {
-      const { title, price, description, chef, visible, categoryId } = req.body;
+      const {
+        title,
+        price,
+        discount,
+        description,
+        chef,
+        category,
+        visible,
+        free,
+        primary,
+      } = req.body;
 
+      const id = +req.params.id;
 
-      db.Course.create(
+      db.Course.update(
         {
-          title : title.trim(),
+          title: title.trim(),
           price,
-          discount
+          discount,
+          description: description.trim(),
+          chefId: chef,
+          categoryId: category,
+          free: free ? true : false,
+          visible: visible ? true : false,
+        },
+        {
+          where: {
+            id,
+          },
         }
-        
-        ).then( ()=>{
+      ).then(() => {
 
+        db.Image.update(
+          {
+            primary: 0,
+          },
+          {
+            where: {
+              courseId: id,
+            },
+          }
+        ).then(() => {
+          db.Image.update(
+            {
+              primary: true,
+            },
+            {
+              where: {
+                id: primary,
+              },
+            }
+          ).then(() => {
+            return res.redirect(`/admin`);
+            /*  if (req.files.length) {
+                      course.images.forEach((image) => {
+                        fs.existsSync(`./public/images/courses/${image}`) &&
+                          fs.unlinkSync(`./public/images/courses/${image}`);
+                      });
+                  } */
+          })
         })
 
+      }).catch(error => console.log(error))
 
 
-      const courseUpdated = {
-        id,
-        categoryId: categoryId,
-        title: title.trim(),
-        price: +price,
-        description: description.trim(),
-        images: req.files.length ? req.files.map(file => file.filename) : course.images,
-        chef,
-        status:
-          (section === "sale" && "sale") ||
-          (section === "free" && "free") ||
-          (section == "newest" && "newest"),
-        imgStatus: course.imgStatus,
-        visible: visible ? true : false,
-      };
-      const courseModified = courses.map((course) => {
-        if (course.id === id) {
-          return courseUpdated;
-        }
-        return course;
-      });
-      fs.writeFileSync(
-        "./data/courses.json",
-        JSON.stringify(courseModified, null, 3),
-        "utf-8"
-      );
-      return res.redirect(`/courses/detail/${id}`);
+
     } else {
       const { id } = req.params;
-      const course = courses.find((course) => course.id === +id);
-      return res.render("courses/formEdit", {
-        categories,
-        ...course,
-        chefs: chefsSort,
-        errors: errors.mapped(),
-        old: req.body,
+
+      if (req.files.length) {
+        req.files.forEach((file) => {
+          fs.existsSync(`./public/images/courses/${file.filename}`) &&
+            fs.unlinkSync(`./public/images/courses/${file.filename}`);
+        });
+      }
+      const course = db.Course.findByPk(id, {
+        include: ["images"],
       });
+
+      const chefs = db.Chef.findAll({
+        order: [["name"]],
+        attributes: ["name", "id"],
+      });
+
+      const categories = db.Category.findAll({
+        order: [["name"]],
+        attributes: ["name", "id"],
+      });
+
+      Promise.all([chefs, categories, course])
+        .then(([chefs, categories, course]) => {
+          return res.render("courses/formEdit", {
+            chefs,
+            categories,
+            ...course.dataValues,
+            errors: errors.mapped(),
+            old: req.body,
+          });
+        })
+        .catch((error) => console.log(error));
     }
   },
   remove: async (req, res) => {

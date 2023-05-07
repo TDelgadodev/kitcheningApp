@@ -13,7 +13,7 @@
               <h5 class="card-title">Registro de Usuario</h5>
             </div>
             <div class="card-body">
-              <form action="" class="row" method="post">
+              <form action="" class="row" method="post" id="form-register">
                 <div class="col-12 col-md-6 mb-3">
                   <label for="name" class="form-label">Nombre</label>
                   <input
@@ -23,7 +23,7 @@
                     name="name"
                     value="<%= locals.old &&  old.name ? old.name : null %>"
                   />
-                  <small class="text-danger ms-2"
+                  <small class="text-danger ms-2" id="errorName"
                     ><%= locals.errors && errors.name ? errors.name.msg :
                     null%></small>
                 </div>
@@ -92,6 +92,6 @@
 
     <%- include('../partials/footer') %> <%- include('../partials/scripts') %>
 
-    <script src="/javascripts/home.js"></script>
+    <script src="/javascript/register.js"></script>
   </body>
 </html>

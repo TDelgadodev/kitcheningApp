@@ -11,6 +11,7 @@
       <div class="form__main__container">
         <form
           action="/courses/add"
+          id="form-add-product"
           class="form__add"
           method="POST"
           enctype="multipart/form-data"
@@ -25,7 +26,7 @@
                 id="title"
                 placeholder="Titulo del curso"
                 value="<%= locals.old &&  old.title ? old.title : null %>"/>
-              <small class="text-danger ms-2"
+              <small class="text-danger ms-2" id="titleError"
                 ><%= locals.errors && errors.title ? errors.title.msg :
                 null%></small>
             </div>
@@ -37,7 +38,7 @@
                 id="price"
                 class="form-control <%= locals.errors && errors.price ? 'is-invalid' : null %>"
                 value="<%= locals.old &&  old.price ? old.price : null %>"/>
-              <small class="text-danger ms-2"
+              <small class="text-danger ms-2" id="priceError"
                 ><%= locals.errors && errors.price ? errors.price.msg :
                 null%></small>
             </div>
@@ -53,7 +54,7 @@
                 <option value="<%= name %>" <%= locals.old && old.chef ? 'selected' : null %>><%= name %></option>
                 <% }) %>
               </select>
-              <small class="text-danger ms-2"
+              <small class="text-danger ms-2" id="chefError"
               ><%= locals.errors && errors.chef ? errors.chef.msg :
               null%></small>
             </div>
@@ -69,7 +70,7 @@
                 <option value="<%= name %>"><%= name %></option>
                 <% }) %>
               </select>
-              <small class="text-danger ms-2"
+              <small class="text-danger ms-2" id="categoriesError"
               ><%= locals.errors && errors.categories ? errors.categories.msg :
               null%></small>
             </div>
@@ -145,5 +146,40 @@
       </div>
     </main>
     <%- include('../partials/footer') %>
+    <%- include('../partials/scripts') %>
+    <!-- <script src="/javascript/form-add.js"></script> -->
+    <script>
+
+      
+      const $ = id => document.getElementById(id);
+      const formAdd = $('form-add-product');
+      const inputTitle = $('title');
+      const inputPrice = $('price');
+      const inputDiscount = $('discount');
+      const textAreaDescription = $('description');
+      const selectChef = $('chef');
+      const selectCategory = $('category');
+      const inputImages = $('images');
+
+
+      inputTitle.addEventListener('blur', function() {
+        switch (true) {
+          case !this.value.trim():
+            $(`titleError`).innerHTML = "El titulo del curso es obligatorio";
+            this.classList.add('is-invalid')
+            break;
+          case this.value.trim().length < 10:
+          $(`titleError`).innerHTML = "El titulo del curso es obligatorio";
+            this.classList.add('is-invalid');
+            break
+          default:
+            this.classList.add('is-valid')
+            break;
+        }
+      })
+
+      
+
+    </script>
   </body>
 </html>
