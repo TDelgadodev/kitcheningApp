@@ -61,5 +61,18 @@ module.exports = {
             }
         }
     },
+    getCountUsers : async () => {
+        try {
+            const totalUsers = db.User.count();
+            return totalUsers;
+
+        } catch (error) {
+            console.log(error)
+            throw {
+                status : 500,
+                message : error.message,
+            }
+        }
+    }
 
 }

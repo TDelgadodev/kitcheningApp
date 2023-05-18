@@ -77,7 +77,7 @@ module.exports = {
     Promise.all([chefs,categories])
     .then(([chefs,categories]) =>{
       return res.render('courses/formAdd',{
-        title : 'Kitchening | Agregar producto',
+        title: 'Kitchening | Agregar producto',
         chefs,
         categories
       })

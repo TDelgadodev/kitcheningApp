@@ -7,6 +7,7 @@ const logger = require("morgan");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const bodyParser = require('body-parser');
+const cors = require('cors')
 
 
 const indexRouter = require("./routes/index");
@@ -34,16 +35,23 @@ app
 )
    .use(cookieCheck)
    .use(localUserCheck)
-   .use(bodyParser.json());
+   .use(bodyParser.json())
+   .use(cors())
 
 
 /* rutas */
-app.use("/", indexRouter); // http://localhost:3000
-app.use("/users", usersRouter); //http://localhost:3000/users
-app.use("/courses", coursesRouter); // http:localhost:3000/courses
-app.use("/api/courses",require('./routes/api/courseApi'));
-app.use("/api/users",require('./routes/api/usersApi'));
+app
+.use("/", indexRouter) // http://localhost:3000
+.use("/users", usersRouter) //http://localhost:3000/users
+.use("/courses", coursesRouter) // http:localhost:3000/courses
 
+/* Api */
+
+app
+
+.use("/api/courses",require('./routes/api/courseApi'))
+.use("/api/users",require('./routes/api/usersApi'))
+.use("/api",require('./routes/api/mainApi'))
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

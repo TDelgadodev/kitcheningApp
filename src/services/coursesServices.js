@@ -6,14 +6,14 @@ module.exports = {
     getAllCourses : async (req)=>{
         try {
 
-            const courses = await db.Course.findAll({
+            const {count, rows : courses} = await db.Course.findAndCountAll({
                 include : [
                     {
                         association : "images",
                         attributes : {
-                            exclude : ['courseId','createdAt','updatedAt'],
+                            exclude : ["createdAt","updatedAt","id","courseId","name"],
                             include : [
-                                literalQueryUrlImage(req,'courses','name','urlImage')
+                                literalQueryUrlImage(req,'courses','name','urlImage'),
                             ]
                         }
                     }
@@ -23,9 +23,11 @@ module.exports = {
                         literalQueryUrl(req,'courses','Course.id')
                     ]
                 }
-            });
-            return courses
-
+            })
+            return {
+                count,
+                courses
+            }
         } catch (error) {
             console.log(error)
             throw {
@@ -68,7 +70,19 @@ module.exports = {
                 message : error.message,
             }
         }
-    }
+    },
+    getCountCourses : async () => {
+        try {
+            const totalCourses = db.Course.count();
+            return totalCourses;
 
+        } catch (error) {
+            console.log(error)
+            throw {
+                status : 500,
+                message : error.message,
+            }
+        }
+    }
 
 }

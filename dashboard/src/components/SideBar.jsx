@@ -16,7 +16,7 @@ export const SideBar = () => {
     <li className="nav-item active">
       <a className="nav-link" href="/">
         <i className="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard - DH movies</span></a>
+        <span>Dashboard - Kitchening</span></a>
     </li>
 
     
@@ -37,13 +37,19 @@ export const SideBar = () => {
     <li className="nav-item">
       <a className="nav-link" href="/">
         <i className="fas fa-fw fa-chart-area"></i>
-        <span>Charts</span></a>
+        <span>Cursos</span></a>
     </li>
 
     <li className="nav-item">
       <a className="nav-link" href="/">
         <i className="fas fa-fw fa-table"></i>
-        <span>Tables</span></a>
+        <span>Chefs</span></a>
+    </li>
+
+    <li className="nav-item">
+      <a className="nav-link" href="/">
+        <i className="fas fa-fw fa-table"></i>
+        <span>Users</span></a>
     </li>
 
     
