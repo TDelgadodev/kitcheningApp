@@ -1,6 +1,6 @@
 import { ContentRowMovies } from "./ContentRowMovies";
 import { LastMovieInDb } from "./LastMovieInDb";
-import { GenresInDb } from "./GenresInDb";
+import { CategoriesInDb } from "./CategoriesInDb";
 
 export const ContentRowTop = () => {
   return (
@@ -13,7 +13,7 @@ export const ContentRowTop = () => {
 
       <div className="row">
         <LastMovieInDb />
-        <GenresInDb />
+        <CategoriesInDb />
       </div>
     </div>
   );

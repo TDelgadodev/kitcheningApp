@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-  <%- include('../partials/head',{ title: 'Editar Producto' }) %>
+  <%- include('../partials/head',{
+    title : 'Kitchening | Agregar producto'
+  }) %>
 
   <body class="form">
     <%- include('../partials/header') %>
@@ -8,142 +10,86 @@
     <main class="form__main">
       <h2>Formulario: Agregar Producto</h2>
       <hr />
-      <div class="form__main__container">
-        <form
-          action="/courses/add"
-          id="form-add-product"
-          class="form__add"
-          method="POST"
-          enctype="multipart/form-data"
-        >
-          <div class="forms-add">
-            <div class="form__box">
-              <label for="title">Titulo</label>
-              <input
-                class="form-control <%= locals.errors && errors.title ? 'is-invalid' : null %>"
-                type="text"
-                name="title"
-                id="title"
-                placeholder="Titulo del curso"
-                value="<%= locals.old &&  old.title ? old.title : null %>"/>
-              <small class="text-danger ms-2" id="titleError"
-                ><%= locals.errors && errors.title ? errors.title.msg :
-                null%></small>
+      <div class="row">
+        <div class="col-12 col-md-10 col-lg-8 mx-auto">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <form action="" class="row" method="POST" enctype="multipart/form-data" id="form-add-product">
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="title" class="form-label">Título</label>
+                            <input type="text" class="form-control <%= locals.errors && errors.title ? 'is-invalid' : null %>" id="title" placeholder="Título del curso" name="title" value="<%= locals.old && old.title ? old.title : null %>">
+                            <small class="text-danger ms-2" id="titleError"><%= locals.errors && errors.title ? errors.title.msg : null %></small>
+                          </div>
+                          <div class="col-6 col-md-3 mb-3">
+                            <label for="price" class="form-label">Precio</label>
+                            <input type="number" class="form-control  <%= locals.errors && errors.price ? 'is-invalid' : null%>" id="price" name="price" value="<%= locals.old && old.price ? old.price : null %>">
+                            <small class="text-danger ms-2" id="priceError"><%= locals.errors && errors.price ? errors.price.msg : null %></small>
+                          </div>
+                          <div class="col-6 col-md-3 mb-3">
+                            <label for="discount" class="form-label">Descuento</label>
+                            <input type="number" class="form-control  <%= locals.errors && errors.discount ? 'is-invalid' : null%>" id="discount" name="discount" value="<%= locals.old && old.discount ? old.discount : 0 %>">
+                            <small class="text-danger ms-2" id="discountError"><%= locals.errors && errors.discount ? errors.discount.msg : null %></small>
+                          </div>
+                          <div class="col-12 col-md-6 mb-3">
+                            <label for="chef" class="form-label">Chef</label>
+                            <select name="chef" id="chef" class="form-control <%= locals.errors && errors.chef ? 'is-invalid' : null%>">
+                                <option value="" selected hidden>Seleccione...</option>
+                                <% chefs.forEach(({name, id}) => { %>
+                                 <option value="<%= id %>" <%= locals.old && old.chef && +old.chef === id ? 'selected' : null %>><%= name %></option>
+                                <% }) %>
+                            </select>
+                            <small class="text-danger ms-2" id="chefError"><%= locals.errors && errors.chef ? errors.chef.msg : null %></small>
+                          </div>
+                          <div class="col-12 col-md-6 mb-3">
+                            <label for="category" class="form-label">Categoría</label>
+                            <select name="category" id="category"
+                              class="form-control <%= locals.errors && errors.category ? 'is-invalid' : null%>">
+                              <option value="" selected hidden>Seleccione...</option>
+                              <% categories.forEach(({name, id})=> { %>
+                                <option value="<%= id %>" <%=locals.old && old.category && +old.category===id ? 'selected' :
+                                  null %>><%= name %>
+                                </option>
+                                <% }) %>
+                            </select>
+                            <small class="text-danger ms-2" id="categoryError">
+                              <%= locals.errors && errors.category ? errors.category.msg : null %>
+                            </small>
+                          </div>
+                          <div class="col-12 mb-3">
+                            <div class="d-flex justify-content-between">
+                              <label for="description" class="form-label">Descripción</label><small id="descriptionInfo"
+                                hidden>(<span id="numberCharacters"></span> caracteres disponibles)</small>
+                            </div>
+                          <div class="col-12 mb-3">
+                            <textarea class="form-control  <%= locals.errors && errors.description ? 'is-invalid' : null%>" id="description" rows="3" name="description"><%= locals.old && old.description ? old.description : null %></textarea>
+                            <small class="text-danger ms-2" id="descriptionError"><%= locals.errors && errors.description ? errors.description.msg : null %></small>
+                          </div>
+                          <div class="col-12 mb-3">
+                            <div class="d-flex justify-content-around">
+                              <div class="form-check form-switch">
+                                <input class="form-check-input" name="free" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Gratuito</label>
+                              </div>
+                              <div class="form-check form-switch">
+                                <input class="form-check-input" name="visible" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                                <label class="form-check-label" for="flexSwitchCheckChecked">Visible</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-9 mb-3">
+                            <label for="images" class="form-label">Imagenes</label>
+                            <input type="file" class="form-control" id="images" name="images" multiple/>
+                            <small class="text-danger ms-2"><%= locals.errors && errors.images ? errors.images.msg : null %></small>
+                          </div>
+                          <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-dark">Crear curso</button>
+                          </div>
+                    </form>
+                </div>
             </div>
-            <div class="form__box">
-              <label for="price">Precio</label>
-              <input
-                type="number"
-                name="price"
-                id="price"
-                class="form-control <%= locals.errors && errors.price ? 'is-invalid' : null %>"
-                value="<%= locals.old &&  old.price ? old.price : null %>"/>
-              <small class="text-danger ms-2" id="priceError"
-                ><%= locals.errors && errors.price ? errors.price.msg :
-                null%></small>
-            </div>
-            <div class="form__box">
-              <label for="chef">Chef</label>
-              <select
-                name="chef"
-                id="chef"
-                class="form-control <%= locals.errors && errors.chef ? 'is-invalid' : null %>"
-              >
-                <option value="" selected hidden>Seleccione..</option>
-                <% chefs.forEach(({name}) => { %>
-                <option value="<%= name %>" <%= locals.old && old.chef ? 'selected' : null %>><%= name %></option>
-                <% }) %>
-              </select>
-              <small class="text-danger ms-2" id="chefError"
-              ><%= locals.errors && errors.chef ? errors.chef.msg :
-              null%></small>
-            </div>
-            <div>
-              <label for="categories">Categorias</label>
-              <select
-                name="categories"
-                id="categories"
-                class="form__box__select"
-              >
-                <option value="" selected hidden>Seleccione..</option>
-                <% categories.forEach(({name}) => { %>
-                <option value="<%= name %>"><%= name %></option>
-                <% }) %>
-              </select>
-              <small class="text-danger ms-2" id="categoriesError"
-              ><%= locals.errors && errors.categories ? errors.categories.msg :
-              null%></small>
-            </div>
-            <div class="form__box">
-              <label for="description">Descripcion</label>
-              <textarea
-                class="form__box__textarea"
-                name="description"
-                id="description"><%= locals.old && old.description ? old.description : null %>
-            </textarea>
-            <small class="text-danger ms-2">
-              <%= locals.errors && errors.description ? errors.description.msg : null %>
-            </small>
-            </div>
-            <div class="d-flex justify-content-around">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="section"
-                  id="new"
-                  checked
-                  value="newest"
-                />
-                <label class="form-check-label" for="new"> Nuevo </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="section"
-                  id="sale"
-                  value="sale"
-                />
-                <label class="form-check-label" for="sale"> Oferta </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="section"
-                  id="free"
-                  value="free"
-                />
-                <label class="form-check-label" for="free"> Gratis </label>
-                <small class="text-danger ms-2">
-                  <%= locals.errors && errors.section ? errors.section.msg : null %>
-                </small>
-              </div>
-            </div>
-            <div class="form-check form-switch">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                role="switch"
-                id="visible"
-                name="visible"
-              />
-              <label class="form-check-label" for="visible">Visible</label>
-            </div>
-            <div class="col-12 mb-3">
-              <label for="images" class="form-label">Imagenes</label>
-              <input type="file" class="form-control" id="images" name="images" multiple/>
-              <small class="text-danger ms-2">
-                <%= locals.errors && errors.image ? errors.image.msg : null %>
-              </small>
-            </div>
-            <div class="d-flex justify-content-end">
-              <button type="submit" class="btn btn-dark">Agregar curso</button>
-            </div>
-          </div>
-        </form>
-      </div>
+        </div>
+
+     </div>
     </main>
     <%- include('../partials/footer') %>
     <%- include('../partials/scripts') %>
@@ -162,23 +108,158 @@
       const inputImages = $('images');
 
 
-      inputTitle.addEventListener('blur', function() {
-        switch (true) {
-          case !this.value.trim():
-            $(`titleError`).innerHTML = "El titulo del curso es obligatorio";
-            this.classList.add('is-invalid')
-            break;
-          case this.value.trim().length < 10:
-          $(`titleError`).innerHTML = "El titulo del curso es obligatorio";
-            this.classList.add('is-invalid');
-            break
-          default:
-            this.classList.add('is-valid')
-            break;
+      const msgError = (element, message, { target }) => {
+      $(element).innerHTML = message
+      target.classList.add('is-invalid')
+    }
+
+    const cleanError = (element, { target }) => {
+      target.classList.remove('is-invalid')
+      target.classList.remove('is-valid')
+      $(element).innerHTML = null
+    }
+
+    inputTitle.addEventListener('blur', function (event) {
+      switch (true) {
+        case !this.value.trim():
+          msgError('titleError', "El título del curso es obligatorio", event)
+          break;
+        case this.value.trim().length < 10:
+          msgError('titleError', "El título debe tener mínimo 10 caracteres", event)
+          break;
+        default:
+          this.classList.add('is-valid')
+          break;
+      }
+    })
+
+    inputTitle.addEventListener('focus', function (event) {
+      cleanError('titleError', event)
+    })
+
+
+    inputPrice.addEventListener('blur', function (event) {
+      switch (true) {
+        case !this.value.trim():
+          msgError('priceError', "El precio es requerido", event)
+          break;
+        case this.value < 0:
+          msgError('priceError', "Solo números positivos", event)
+          break;
+        default:
+          this.classList.add('is-valid')
+          break;
+      }
+    })
+
+    inputPrice.addEventListener('focus', function () {
+      cleanError('priceError', event)
+    })
+
+    inputDiscount.addEventListener('blur',function(event){
+      if(this.value < 0){
+        msgError('discountError','Solo numeros positivos',event)
+      } else{
+        this.classList.add('is-valid')        
+      }
+    })
+
+    inputDiscount.addEventListener('focus', function () {
+      cleanError('discountError', event)
+    })
+      
+    selectChef.addEventListener('blur',function(event){
+      if(!this.value){
+        msgError('chefError','Debes de seleccionar un chef',event)
+      } else{
+        this.classList.add('is-valid')        
+      }
+    })
+
+    selectChef.addEventListener('focus', function (event) {
+      cleanError('chefError', event)
+    })
+
+    selectCategory.addEventListener('blur', function (event) {
+      if (!this.value) {
+        msgError('categoryError', "Debes indicar una categoría", event)
+      } else {
+        this.classList.add('is-valid')
+      }
+    })
+
+    selectCategory.addEventListener('focus', function () {
+      cleanError('categoryError', event)
+    })
+
+
+    textAreaDescription.addEventListener('blur', function (event) {
+      switch (true) {
+        case !this.value.trim():
+          msgError('descriptionError', "La descripción es requerida", event)
+          break;
+        case this.value.trim().length < 20:
+          msgError('descriptionError', "Mínimo 20 caracteres", event)
+          break;
+        case this.value.trim().length > 500:
+          msgError('descriptionError', "Máximo 500 caracteres", event)
+          break;
+        default:
+          this.classList.add('is-valid')
+          break;
+      }
+    })
+
+    let maxCharacters = 500;
+    let numberCharacters = 500;
+
+    textAreaDescription.addEventListener('focus', function (event) {
+      cleanError('descriptionError', event)
+    })
+
+    let textValid;
+
+    textAreaDescription.addEventListener("keyup", function (event) {
+      if (textValid && event.key !== 'Backspace') {
+        this.value = textValid
+        msgError('descriptionError', "Máximo 500 caracteres", event)
+        return null
+      }
+      numberCharacters = maxCharacters - +this.value.length;
+
+      $('numberCharacters').innerHTML = numberCharacters;
+
+      if (numberCharacters === 0) {
+        textValid = this.value.trim()
+      } else {
+        textValid = null
+      }
+
+      if (numberCharacters <= 0) {
+        $('descriptionInfo').hidden = true;
+        msgError('descriptionError', "Máximo 500 caracteres", event)
+      } else {
+        $('descriptionInfo').hidden = false;
+        cleanError('descriptionError', event)
+      }
+
+      formAdd.addEventListener('submit',function(event){
+        event.preventDefault()
+        let error = false
+        for (let i = 0; i < this.elements.length - 4; i++) {
+          if(!this.elements[i].value || this.elements[i].classList.contains('is-valid')){
+            error = true;
+          }
+          
+        }
+
+        if(!error){
+          this.submit()
         }
       })
 
-      
+    })
+
 
     </script>
   </body>

@@ -35,6 +35,7 @@ export const ContentRowMovies = () => {
 
         if(ok){
           const {totalCourses,totalChefs,totalUsers} = data;
+          
           setState({
             ...state,
             courses : {

@@ -50,6 +50,7 @@ app
 app
 
 .use("/api/courses",require('./routes/api/courseApi'))
+.use("/api/categories",require('./routes/api/categoryApi'))
 .use("/api/users",require('./routes/api/usersApi'))
 .use("/api",require('./routes/api/mainApi'))
 
